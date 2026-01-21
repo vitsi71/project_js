@@ -1,5 +1,5 @@
-export class Login {
+export class SignUp {
     constructor() {
-        console.log('Логин');
+        console.log('Регистрация');
     }
 }

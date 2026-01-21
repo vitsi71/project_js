@@ -1,5 +1,5 @@
-export class Main {
+export class Login {
     constructor() {
-        console.log('Главная');
+        console.log('Логин');
     }
 }
