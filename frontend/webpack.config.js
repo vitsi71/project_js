@@ -13,7 +13,22 @@ export default {
         filename: "app.js",
         path: path.resolve(__dirname, "dist"),
     },
-
+    module: {
+        rules: [
+            {
+                test: /\.scss$/i,
+                // test: /\.s[ac]ss$/i,
+                use: [
+                    // Creates `style` nodes from JS strings
+                    "style-loader",
+                    // Translates CSS into CommonJS
+                    "css-loader",
+                    // Compiles Sass to CSS
+                    "sass-loader",
+                ],
+            },
+        ],
+    },
     devServer: {
         static: {
             directory: path.join(__dirname, "public"),
@@ -31,6 +46,9 @@ export default {
             patterns: [
                 {from: "./src/templates", to: "templates"},
                 {from: "./src/static/images", to: "images"},
+                {from: "./src/static/js", to: "js"},
+                {from: "./src/static/css", to: "css"},
+                {from: "./src/static/fonts", to: "fonts"},
             ],
         }),
     ],

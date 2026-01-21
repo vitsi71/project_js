@@ -1,1 +1,51 @@
-вход
+<div class="container-form d-flex flex-column justify-content-center text-center m-auto">
+    <div>
+        <div class="login-logo pb-1 mb-5">
+            <a href="/"><img src="images/logo.png" alt="logo"></a>
+        </div>
+        <h1 class="pt-2 pb-1 mb-3 font-m fs-40px">Вход</h1>
+
+
+        <form class='d-flex flex-column gap-10px px-1'>
+
+
+            <div class=" ">
+                <div class="input-group">
+                    <span class="input-group-text" id="email"><img src="images/mail.png"></span>
+                    <input type="email" class="form-control" placeholder="Электронная почта" aria-label="email"
+                           aria-describedby="email">
+                </div>
+                <span id="email-error" class="error invalid-feedback" style="">Введите корректный E-mail</span>
+            </div>
+
+            <div class=" ">
+                <div class="input-group">
+                    <span class="input-group-text" id="password"><img src="images/lock.png"></span>
+                    <input type="password" class="form-control" placeholder="Пароль" aria-label="password"
+                           aria-describedby="password">
+                </div>
+                <span id="password-error" class="error invalid-feedback" style="">Заполните пароль</span>
+            </div>
+
+
+            <div class="d-flex align-items-center gap-2 mb-10px" >
+                <input type="checkbox" id="remember-me">
+                <label class="fs-12px ps-1" style="color: #000;" for="remember-me">
+                    Запомнить меня
+                </label>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block w-100 font-m fs-15px mb-10px" id="process-button">
+                Войти
+            </button>
+        </form>
+
+
+        <div class="social-auth-links d-flex fs-12px gap-10px" style="color: #000;">
+            Ещё нет аккаунта?
+            <a href="sign-up" class=" ">
+                Пройдите регистрацию
+            </a>
+        </div>
+    </div>
+</div>
