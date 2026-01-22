@@ -1,6 +1,16 @@
 import {Main} from "./components/main.js";
-import {SignUp} from "./components/sign-up.js";
-import {Login} from "./components/login.js";
+import {Login} from "./components/auth/login";
+import {SignUp} from "./components/auth/sign-up";
+import {Credit} from "./components/credit/credit";
+import {Credit_add} from "./components/credit/credit_add";
+import {Credit_edit} from "./components/credit/credit_edit";
+import {Debit} from "./components/debit/debit";
+import {Debit_edit} from "./components/debit/debit_edit";
+import {Debit_add} from "./components/debit/debit_add";
+import {Debit_credit} from "./components/debit-credit/debit_credit";
+import {Item_create} from "./components/debit-credit/item_create";
+import {Item_edit} from "./components/debit-credit/item_edit";
+
 
 export class Router {
     constructor() {
@@ -33,9 +43,9 @@ export class Router {
                 title: 'Авторизация',
                 filePathTemplate: '/templates/pages/auth/login.html',
                 load: () => {
-                //     document.body.classList.add('login-page');
-                //     document.body.style.height = '100vh';
-                //     new Login(this.openNewRoute.bind(this));
+                    //     document.body.classList.add('login-page');
+                    //     document.body.style.height = '100vh';
+                    //     new Login(this.openNewRoute.bind(this));
                     new Login();
                 },
                 // unload: () => {
@@ -49,16 +59,90 @@ export class Router {
                 title: 'Регистрация',
                 filePathTemplate: '/templates/pages/auth/sign-up.html',
                 load: () => {
-                //     document.body.classList.add('register-page');
-                //     document.body.style.height = '100vh';
-                //     new SignUp(this.openNewRoute.bind(this));
                     new SignUp();
                 },
-                // unload: () => {
-                //     document.body.classList.remove('register-page');
-                //     document.body.style.height = 'auto';
-                // },
-                // styles: ['icheck-bootstrap.min.css']
+
+            },
+            {
+                route: '/debit',
+                title: 'Доходы',
+                filePathTemplate: '/templates/pages/debit/debit.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new Debit();
+                },
+            },
+            {
+                route: '/debit_add',
+                title: 'Создание категории доходов',
+                filePathTemplate: '/templates/pages/debit/debit_add.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new Debit_add();
+                },
+            },
+            {
+                route: '/debit_edit',
+                title: 'Редактирование категории доходов',
+                filePathTemplate: '/templates/pages/debit/debit_edit.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new Debit_edit();
+                },
+            },
+            {
+                route: '/credit',
+                title: 'Расходы',
+                filePathTemplate: '/templates/pages/credit/credit.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new Credit();
+                },
+            },
+            {
+                route: '/credit_add',
+                title: 'Создание категории расходов',
+                filePathTemplate: '/templates/pages/credit/credit_add.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new Credit_add();
+                },
+            },
+            {
+                route: '/credit_edit',
+                title: 'Редактирование категории расходов',
+                filePathTemplate: '/templates/pages/credit/credit_edit.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new Credit_edit();
+                },
+            },
+            {
+                route: '/debit_credit',
+                title: 'Доходы и расходы',
+                filePathTemplate: '/templates/pages/debit-credit/debit_credit.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new Debit_credit();
+                },
+            },
+            {
+                route: '/item_create',
+                title: 'Создание дохода/расхода',
+                filePathTemplate: '/templates/pages/debit-credit/item_create.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new Item_create();
+                },
+            },
+            {
+                route: '/item_edit',
+                title: 'Редактирование дохода/расхода',
+                filePathTemplate: '/templates/pages/debit-credit/item_edit.html',
+                useLayout: '/templates/layout.html',
+                load: () => {
+                    new Item_edit();
+                },
             },
             // {
             //     route: '/logout',
@@ -77,7 +161,7 @@ export class Router {
         window.addEventListener('popstate', this.activateRoute.bind(this));
     }
 
-   async activateRoute() {
+    async activateRoute() {
         // определяем открытую страницу
         const urlRoute = window.location.pathname;
         const newRoute = this.routes.find(item => item.route === urlRoute);
@@ -100,23 +184,23 @@ export class Router {
             }
 
             if (newRoute.filePathTemplate) {
-            //
-            //     // document.body.className = ''; // очищаем все классы перед загрузкой страницы
-            //
+                //
+                //     // document.body.className = ''; // очищаем все классы перед загрузкой страницы
+                //
                 let contentBlock = this.contentPageElement;
                 if (newRoute.useLayout) {
 
                     this.contentPageElement.innerHTML = await fetch(newRoute.useLayout).then(response => response.text());
                     contentBlock = document.getElementById('content-layout');
-            //         document.body.classList.add('sidebar-mini');
-            //         document.body.classList.add('layout-fixed');
-            //         this.activateMenuItem(newRoute);
+                    //         document.body.classList.add('sidebar-mini');
+                    //         document.body.classList.add('layout-fixed');
+                    //         this.activateMenuItem(newRoute);
                 } else {
-            //         document.body.classList.remove('sidebar-mini');
-            //         document.body.classList.remove('layout-fixed');
+                    //         document.body.classList.remove('sidebar-mini');
+                    //         document.body.classList.remove('layout-fixed');
                 }
                 contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());
-            //
+                //
 
             }
             //
