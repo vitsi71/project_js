@@ -103,20 +103,21 @@ export class Router {
             //
             //     // document.body.className = ''; // очищаем все классы перед загрузкой страницы
             //
-            //     let contentBlock = this.contentPageElement;
-            //     if (newRoute.useLayout) {
-                    this.contentPageElement.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());
-                    // this.contentPageElement.innerHTML = await fetch(newRoute.useLayout).then(response => response.text());
-                    // contentBlock = document.getElementById('content-layout');
+                let contentBlock = this.contentPageElement;
+                if (newRoute.useLayout) {
+
+                    this.contentPageElement.innerHTML = await fetch(newRoute.useLayout).then(response => response.text());
+                    contentBlock = document.getElementById('content-layout');
             //         document.body.classList.add('sidebar-mini');
             //         document.body.classList.add('layout-fixed');
             //         this.activateMenuItem(newRoute);
-            //     } else {
+                } else {
             //         document.body.classList.remove('sidebar-mini');
             //         document.body.classList.remove('layout-fixed');
-            //     }
-            //     contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());
+                }
+                contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());
             //
+
             }
             //
             //
@@ -127,8 +128,8 @@ export class Router {
         } else {
             console.log('No route found');
             window.location = '/404';
-            // history.pushState({}, '', '/404');// позволяет изменить URL без перезагрузки и добавить новую запись в историю браузера
-            // await this.activateRoute();
+            history.pushState({}, '', '/404');// позволяет изменить URL без перезагрузки и добавить новую запись в историю браузера
+            await this.activateRoute();
         }
     }
 }
