@@ -10,6 +10,7 @@ import {Debit_credit} from "./components/debit-credit/debit_credit";
 import {Item_create} from "./components/debit-credit/item_create";
 import {Item_edit} from "./components/debit-credit/item_edit";
 import {Main} from "./components/main/main";
+import {Layout} from "./components/main/layout";
 
 
 export class Router {
@@ -27,6 +28,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new Main();
+                    new Layout();
                     // new Dashboard(this.openNewRoute.bind(this));
                 },
                 // styles: ['fullcalendar.css'],
@@ -70,6 +72,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new Debit();
+                    new Layout();
                 },
             },
             {
@@ -79,6 +82,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new Debit_add();
+                    new Layout();
                 },
             },
             {
@@ -88,6 +92,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new Debit_edit();
+                    new Layout();
                 },
             },
             {
@@ -97,6 +102,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new Credit();
+                    new Layout();
                 },
             },
             {
@@ -106,6 +112,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new Credit_add();
+                    new Layout();
                 },
             },
             {
@@ -115,6 +122,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new Credit_edit();
+                    new Layout();
                 },
             },
             {
@@ -124,6 +132,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new Debit_credit();
+                    new Layout();
                 },
             },
             {
@@ -133,6 +142,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new Item_create();
+                    new Layout();
                 },
             },
             {
@@ -142,6 +152,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new Item_edit();
+                    new Layout();
                 },
             },
             // {

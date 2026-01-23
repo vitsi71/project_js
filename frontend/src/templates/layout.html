@@ -8,7 +8,7 @@
                 <hr>
                 <ul class="nav-sidebar nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="/" class="nav-link active d-flex gap-10px align-items-center" aria-current="page">
+                        <a href="/" class="nav-link link-dark d-flex gap-10px align-items-center" aria-current="page" id="main_link">
                             <svg width="15" height="14" viewBox="0 0 15 14" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -25,7 +25,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="debit_credit" class="nav-link link-dark d-flex gap-10px align-items-center text-nowrap">
+                        <a href="debit_credit" class="nav-link link-dark d-flex gap-10px align-items-center text-nowrap" id="debit_credit_link">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -44,12 +44,11 @@
 
 
                     <li>
-                        <!--            <div class="nav-collapse " id="nav-collapse"> для активации добавляем класс-->
-                        <div class=" " id="nav-collapse">
+                         <div class="nav-collapse" id="nav-collapse">
                             <div class="d-flex">
                                 <button style="color: #052c65"
                                         class="btn-toggle d-inline-flex align-items-center justify-content-between border-0 collapsed px-3 py-2 w-100"
-                                        data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+                                        data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false" id="btn-category">
                                     Категории
 
                                     <span class=" "><svg width="7" height="13" viewBox="0 0 7 13" fill="none"
@@ -64,12 +63,12 @@
 
                             <div class="collapse" id="home-collapse" style="">
                                 <div>
-                                    <a href="debit" class="nav-link">
+                                    <a href="debit" class="nav-link" id="debit_link">
                                         Доходы
                                     </a>
                                 </div>
                                 <div>
-                                    <a href="credit" class="nav-link active">
+                                    <a href="credit" class="nav-link" id="credit_link">
                                         Расходы
                                     </a>
                                 </div>
