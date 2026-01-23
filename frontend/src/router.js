@@ -1,4 +1,3 @@
-import {Main} from "./components/main.js";
 import {Login} from "./components/auth/login";
 import {SignUp} from "./components/auth/sign-up";
 import {Credit} from "./components/credit/credit";
@@ -10,6 +9,7 @@ import {Debit_add} from "./components/debit/debit_add";
 import {Debit_credit} from "./components/debit-credit/debit_credit";
 import {Item_create} from "./components/debit-credit/item_create";
 import {Item_edit} from "./components/debit-credit/item_edit";
+import {Main} from "./components/main/main";
 
 
 export class Router {
