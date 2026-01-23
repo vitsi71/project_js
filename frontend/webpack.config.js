@@ -3,6 +3,7 @@ import {fileURLToPath} from "node:url";
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from "copy-webpack-plugin";
 
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -47,6 +48,7 @@ export default {
                 {from: "./src/templates", to: "templates"},
                 {from: "./src/static/images", to: "images"},
                 {from: "./src/static/js", to: "js"},
+                {from: "./src/static/js/bootstrap.js", to: "js"},
                 {from: "./src/static/css", to: "css"},
                 {from: "./src/static/fonts", to: "fonts"},
             ],
