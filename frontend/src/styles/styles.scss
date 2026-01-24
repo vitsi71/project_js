@@ -1,3 +1,4 @@
 @use "./style.css";
 @use "./bootstrap.css";
-//@import "./style.css";
+ //вместо подключения локальной библиотеки не работает
+//@import "bootstrap/scss/bootstrap";
