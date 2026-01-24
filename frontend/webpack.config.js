@@ -17,8 +17,8 @@ export default {
     module: {
         rules: [
             {
-                test: /\.scss$/i,
-                // test: /\.s[ac]ss$/i,
+                // test: /\.scss$/i,
+                test: /\.s[ac]ss$/i,
                 use: [
                     // Creates `style` nodes from JS strings
                     "style-loader",
@@ -47,9 +47,6 @@ export default {
             patterns: [
                 {from: "./src/templates", to: "templates"},
                 {from: "./src/static/images", to: "images"},
-                {from: "./src/static/js", to: "js"},
-                {from: "./src/static/js/bootstrap.js", to: "js"},
-                {from: "./src/static/css", to: "css"},
                 {from: "./src/static/fonts", to: "fonts"},
             ],
         }),
