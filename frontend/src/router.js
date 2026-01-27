@@ -11,6 +11,7 @@ import {Item_create} from "./components/debit-credit/item_create";
 import {Item_edit} from "./components/debit-credit/item_edit";
 import {Main} from "./components/main/main";
 import {Layout} from "./components/main/layout";
+import {Logout} from "./components/auth/logout";
 
 
 export class Router {
@@ -48,7 +49,7 @@ export class Router {
                     //     document.body.classList.add('login-page');
                     //     document.body.style.height = '100vh';
                     //     new Login(this.openNewRoute.bind(this));
-                    new Login();
+                    new Login(this.openNewRoute.bind(this));
                 },
                 // unload: () => {
                 //     document.body.classList.remove('login-page');
@@ -61,7 +62,7 @@ export class Router {
                 title: 'Регистрация',
                 filePathTemplate: '/templates/pages/auth/sign-up.html',
                 load: () => {
-                    new SignUp();
+                    new SignUp(this.openNewRoute.bind(this));
                 },
 
             },
@@ -101,7 +102,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/credit/credit.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new Credit();
+                    new Credit(this.openNewRoute.bind(this));
                     new Layout();
                 },
             },
@@ -155,13 +156,13 @@ export class Router {
                     new Layout();
                 },
             },
-            // {
-            //     route: '/logout',
-            //     load: () => {
-            //         new Logout(this.openNewRoute.bind(this));
-            //     },
-            //
-            // },
+            {
+                route: '/logout',
+                load: () => {
+                    new Logout(this.openNewRoute.bind(this));
+                },
+
+            },
         ]
 
     }
@@ -172,7 +173,13 @@ export class Router {
         window.addEventListener('popstate', this.activateRoute.bind(this));
     }
 
-    async activateRoute() {
+    async openNewRoute(url) {
+        const currentRoute = window.location.pathname;
+        history.pushState({}, '', url);// позволяет изменить URL без перезагрузки и добавить новую запись в историю браузера
+        await this.activateRoute(null, currentRoute);
+    }
+
+    async activateRoute(e, oldRoute = null) {
         // определяем открытую страницу
         const urlRoute = window.location.pathname;
         const newRoute = this.routes.find(item => item.route === urlRoute);

@@ -26,6 +26,7 @@ export default {
                     "css-loader",
                     // Compiles Sass to CSS
                     "sass-loader",
+
                 ],
             },
 

@@ -5,28 +5,26 @@
         </div>
         <h1 class="pt-2 pb-1 mb-3 font-m fs-40px">Вход</h1>
 
-
+        <div class="error invalid-feedback text-center mb-3" id="common-error">Не правильный email или пароль</div>
         <form class='d-flex flex-column gap-10px px-1'>
 
-
-            <div class=" ">
+<!--            <div class=" ">-->
                 <div class="input-group">
-                    <span class="input-group-text" id="email"><img src="images/mail.png"></span>
-                    <input type="email" class="form-control" placeholder="Электронная почта" aria-label="email"
-                           aria-describedby="email">
-                </div>
-                <span id="email-error" class="error invalid-feedback" style="">Введите корректный E-mail</span>
+                    <span class="input-group-text" ><img src="images/mail.png"></span>
+                    <input type="email" class="form-control" style="border-radius: 0 5px 5px 0" placeholder="Электронная почта" aria-label="email"
+                           aria-describedby="email" id="email">
+<!--                </div>-->
+                <span id="email-error" class="error invalid-feedback text-start" style="">Введите корректный E-mail</span>
             </div>
 
-            <div class=" ">
+<!--            <div class=" ">-->
                 <div class="input-group">
-                    <span class="input-group-text" id="password"><img src="images/lock.png"></span>
-                    <input type="password" class="form-control" placeholder="Пароль" aria-label="password"
-                           aria-describedby="password">
-                </div>
-                <span id="password-error" class="error invalid-feedback" style="">Заполните пароль</span>
+                    <span class="input-group-text" ><img src="images/lock.png"></span>
+                    <input type="password" class="form-control" style="border-radius: 0 5px 5px 0" placeholder="Пароль" aria-label="password"
+                           aria-describedby="password" id="password">
+<!--                </div>-->
+                <span id="password-error" class="error invalid-feedback text-start" style="">Заполните пароль</span>
             </div>
-
 
             <div class="d-flex align-items-center gap-2 mb-10px" >
                 <input type="checkbox" id="remember-me">
@@ -43,7 +41,7 @@
 
         <div class="social-auth-links d-flex fs-12px gap-10px" style="color: #000;">
             Ещё нет аккаунта?
-            <a href="sign-up" class=" ">
+            <a href="sign-up">
                 Пройдите регистрацию
             </a>
         </div>
