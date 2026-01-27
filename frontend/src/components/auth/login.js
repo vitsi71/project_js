@@ -15,7 +15,6 @@ export class Login {
         this.rememberMeElement = document.getElementById('remember-me');
         this.commonErrorElement = document.getElementById('common-error');
 
-        // document.getElementById('process-button').addEventListener('click', this.validateForm.bind(this))//bind(this) - чтобы контекст не менялся
         document.getElementById('process-button').addEventListener('click', this.login.bind(this))//bind(this) - чтобы контекст не менялся
 
     }
@@ -41,14 +40,14 @@ export class Login {
     async login() {
         this.commonErrorElement.style.display = 'none';
         if (this.validateForm()) {
-
+// Передаем параметры для запроса на backend
             const result = await HttpUtils.request('/login', 'POST',false, {
                 email: this.emailElement.value,
                 password: this.passwordElement.value,
                 rememberMe: this.rememberMeElement.checked
             });
             const response = result.response;
-            console.log(response);
+// если получили успешный ответ
             if (result.error || !response || (response && (!response.tokens.accessToken || !response.tokens.refreshToken || !response.user.id || !response.user.name || !response.user.lastName))) {
                 this.commonErrorElement.style.display = 'block';
                 return;

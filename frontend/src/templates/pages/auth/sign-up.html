@@ -2,57 +2,54 @@
     <div>
         <div class="login-logo pb-1 mb-5">
             <!--            <a href="javascript:void(0)"><img src="image/logo.png" alt="logo"></a>-->
-            <a href="/"><img src="images/logo.png" alt="logo"></a>
+            <a href="#"><img src="images/logo.png" alt="logo"></a>
         </div>
         <h1 class="pt-2 pb-1 mb-3 font-m fs-40px">Создайте аккаунт</h1>
 
+        <div class="error invalid-feedback text-center mb-3" id="common-error">
+            Не удалось зарегистрировать пользователя. Обратитесь в поддержку.
+        </div>
 
         <form class='d-flex flex-column gap-10px px-1'>
 
-            <div class=" ">
-                <div class="input-group">
-                    <span class="input-group-text" id="name"><img src="images/person.png"></span>
-                    <input type="text" class="form-control" placeholder="Имя" aria-label="name"
-                           aria-describedby="name">
-                </div>
-                <span id="name-error" class="error invalid-feedback" style="">Введите Имя</span>
+            <div class="input-group">
+                <span class="input-group-text"><img src="images/person.png"></span>
+                <input id="name" type="text" class="form-control" style="border-radius: 0 5px 5px 0" placeholder="Имя"
+                       aria-label="name"
+                       aria-describedby="name">
+                <span class="error invalid-feedback" style="">Введите Имя</span>
             </div>
 
-
-            <div class=" ">
-                <div class="input-group">
-                    <span class="input-group-text" id="last-name"><img src="images/person.png"></span>
-                    <input type="text" class="form-control" placeholder="Фамилия" aria-label="last-name"
-                           aria-describedby="last-name">
-                </div>
-                <span id="last-name-error" class="error invalid-feedback" style="">Введите фамилию</span>
+            <div class="input-group">
+                <span class="input-group-text"><img src="images/person.png"></span>
+                <input id="last-name" type="text" class="form-control" style="border-radius: 0 5px 5px 0"
+                       placeholder="Фамилия" aria-label="last-name"
+                       aria-describedby="last-name">
+                <span class="error invalid-feedback" style="">Введите фамилию</span>
             </div>
 
-            <div class=" ">
-                <div class="input-group">
-                    <span class="input-group-text" id="email"><img src="images/mail.png"></span>
-                    <input type="email" class="form-control" placeholder="Электронная почта" aria-label="email"
-                           aria-describedby="email">
-                </div>
-                <span id="email-error" class="error invalid-feedback" style="">Введите корректный E-mail</span>
+            <div class="input-group">
+                <span class="input-group-text"><img src="images/mail.png"></span>
+                <input id="email" type="email" class="form-control" style="border-radius: 0 5px 5px 0"
+                       placeholder="Электронная почта" aria-label="email"
+                       aria-describedby="email">
+                <span class="error invalid-feedback" style="">Введите корректный E-mail</span>
             </div>
 
-            <div class=" ">
-                <div class="input-group">
-                    <span class="input-group-text" id="password"><img src="images/lock.png"></span>
-                    <input type="password" class="form-control" placeholder="Пароль" aria-label="password"
-                           aria-describedby="password">
-                </div>
-                <span id="password-error" class="error invalid-feedback" style="">Заполните пароль</span>
+            <div class="input-group">
+                <span class="input-group-text"><img src="images/lock.png"></span>
+                <input id="password" type="password" class="form-control" style="border-radius: 0 5px 5px 0"
+                       placeholder="Пароль" aria-label="password"
+                       aria-describedby="password">
+                <span class="error invalid-feedback" style="">Пароль должен быть не менее 8 символов, содержать как минимум 1 букву в верхнем регистре и как минимум 1 цифру</span>
             </div>
 
-            <div class="mb-10px">
-                <div class="input-group">
-                    <span class="input-group-text" id="password-repeat"><img src="images/lock.png"></span>
-                    <input type="password" class="form-control" placeholder="Повторите пароль" aria-label="password-repeat"
-                           aria-describedby="password">
-                </div>
-                <span id="password-repeat-error" class="error invalid-feedback" style="">Пароль и повторение пароля должны совпадать</span>
+            <div class="input-group mb-10px">
+                <span class="input-group-text"><img src="images/lock.png"></span>
+                <input id="password-repeat" type="password" class="form-control" style="border-radius: 0 5px 5px 0"
+                       placeholder="Повторите пароль" aria-label="password-repeat"
+                       aria-describedby="password">
+                <span class="error invalid-feedback" style="">Пароль и повторение пароля должны совпадать</span>
             </div>
 
             <button type="button" class="btn btn-primary btn-block w-100 font-m fs-15px " id="process-button">
@@ -61,13 +58,12 @@
 
             <div class="d-flex fs-12px gap-10px m-auto" style="color: #000;">
                 Уже есть аккаунт?
-                <a href="login" class=" ">
+                <a href="login">
                     Войдите в систему
                 </a>
             </div>
 
         </form>
-
 
 
     </div>

@@ -46,17 +46,9 @@ export class Router {
                 title: 'Авторизация',
                 filePathTemplate: '/templates/pages/auth/login.html',
                 load: () => {
-                    //     document.body.classList.add('login-page');
-                    //     document.body.style.height = '100vh';
-                    //     new Login(this.openNewRoute.bind(this));
                     new Login(this.openNewRoute.bind(this));
                 },
-                // unload: () => {
-                //     document.body.classList.remove('login-page');
-                //     document.body.style.height = 'auto';
-                // },
-                // styles: ['icheck-bootstrap.min.css']
-            },
+             },
             {
                 route: '/sign-up',
                 title: 'Регистрация',
@@ -64,7 +56,6 @@ export class Router {
                 load: () => {
                     new SignUp(this.openNewRoute.bind(this));
                 },
-
             },
             {
                 route: '/debit',
@@ -173,16 +164,17 @@ export class Router {
         window.addEventListener('popstate', this.activateRoute.bind(this));
     }
 
+    // открвтие страницы по ссылке
     async openNewRoute(url) {
-        const currentRoute = window.location.pathname;
+        const currentRoute = window.location.pathname;//возвращает путь, следующий за именем домена в текущем URL-адресе
         history.pushState({}, '', url);// позволяет изменить URL без перезагрузки и добавить новую запись в историю браузера
         await this.activateRoute(null, currentRoute);
     }
 
     async activateRoute(e, oldRoute = null) {
         // определяем открытую страницу
-        const urlRoute = window.location.pathname;
-        const newRoute = this.routes.find(item => item.route === urlRoute);
+        const urlRoute = window.location.pathname;//возвращает путь, следующий за именем домена в текущем URL-адресе
+        const newRoute = this.routes.find(item => item.route === urlRoute);//ищем соответствующий route
 
         if (newRoute) {
             // if (newRoute.styles && newRoute.styles.length > 0) {
