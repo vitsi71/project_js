@@ -10,7 +10,6 @@ import {Debit_credit} from "./components/debit-credit/debit_credit";
 import {Item_create} from "./components/debit-credit/item_create";
 import {Item_edit} from "./components/debit-credit/item_edit";
 import {Main} from "./components/main/main";
-import {Layout} from "./components/main/layout";
 import {Logout} from "./components/auth/logout";
 
 
@@ -151,6 +150,28 @@ export class Router {
     initEvents() {
         window.addEventListener('DOMContentLoaded', this.activateRoute.bind(this));
         window.addEventListener('popstate', this.activateRoute.bind(this));
+        document.addEventListener('click', this.clickHandler.bind(this));
+    }
+// при клике на ссылки меняет только наполнение страницы без перезагрузки
+    async clickHandler(e) {
+        // console.log(e.target); // показывает элемент на каторый было нажатие
+        let element = null;
+        //  e.target.nodeName возвращает имя тега на которыйбыл click ( в данном случае <a>)
+        if (e.target.nodeName === 'A') {
+            element = e.target;
+        } else if (e.target.parentNode.nodeName === 'A') {
+            element = e.target.parentNode;
+        }
+        if (element) {
+            e.preventDefault(); // отменяет действие по умолчанию(в данном случае не обрабатывается click
+
+            const currentRoute = window.location.pathname;//возвращает путь, следующий за именем домена в текущем URL-адресе
+            const url = element.href.replace(window.location.origin, '');//заменяем в ссылке начало на ""
+            if (!url || (currentRoute === url.replace('#', '')) || url.startsWith('javascript:void(0)')) {  //startsWith - проверяет, начинается ли строка с указанной подстроки
+                return;
+            }
+            await this.openNewRoute(url);
+        }
     }
 
     // открвтие страницы по ссылке
@@ -166,38 +187,18 @@ export class Router {
         const newRoute = this.routes.find(item => item.route === urlRoute);//ищем соответствующий route
 
         if (newRoute) {
-            // if (newRoute.styles && newRoute.styles.length > 0) {
-            //     newRoute.styles.forEach(style => {
-            //         FileUtils.loadPageStyle('/css/' + style, this.adminLteStyleElement);
-            //     })
-            // }
-            //
-            // if (newRoute.scripts && newRoute.scripts.length > 0) {
-            //     for (const script of newRoute.scripts) {
-            //         await FileUtils.loadPageScript('/js/' + script); // делается для последовательной загрузки
-            //     }
-            // }
-            //
-            if (newRoute.title) {
+             if (newRoute.title) {
                 this.titlePageElement.innerText = newRoute.title + ' | Фронтенд проект на JS';
             }
             // Собираем index.html страницу
             if (newRoute.filePathTemplate) {
-                //
-                //     // document.body.className = ''; // очищаем все классы перед загрузкой страницы
-                //
+
                 let contentBlock = this.contentPageElement; // определяем место вставки HTML кода в шаблоне index.html
                 if (newRoute.useLayout) {
                     // ищем и вставляем текст HTML страницы useLayout в index.html
                     this.contentPageElement.innerHTML = await fetch(newRoute.useLayout).then(response => response.text());
                     // на полученной странице ищем место для следующей вставки кода
                     contentBlock = document.getElementById('content-layout');
-                    //         document.body.classList.add('sidebar-mini');
-                    //         document.body.classList.add('layout-fixed');
-                    //         this.activateMenuItem(newRoute);
-                } else {
-                    //         document.body.classList.remove('sidebar-mini');
-                    //         document.body.classList.remove('layout-fixed');
                 }
                 // ищем и вставляем основной текст HTML открываемой страницы из filePathTemplate в index.html
                 contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());
