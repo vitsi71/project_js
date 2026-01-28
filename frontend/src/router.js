@@ -22,18 +22,15 @@ export class Router {
 
         this.initEvents();
         this.routes = [
+
             {
                 route: '/',
                 title: 'Главная',
                 filePathTemplate: '/templates/pages/main.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new Main();
-                    new Layout();
-                    // new Dashboard(this.openNewRoute.bind(this));
-                },
-                // styles: ['fullcalendar.css'],
-                // scripts: ['moment.min.js','moment-ru-locale.js','fullcalendar.js','fullcalendar-ru-locale.js'],
+                    new Main(this.openNewRoute.bind(this));
+                                  },
             },
             {
                 route: '/404',
@@ -48,7 +45,8 @@ export class Router {
                 load: () => {
                     new Login(this.openNewRoute.bind(this));
                 },
-             },
+            },
+
             {
                 route: '/sign-up',
                 title: 'Регистрация',
@@ -63,9 +61,8 @@ export class Router {
                 filePathTemplate: '/templates/pages/debit/debit.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new Debit();
-                    new Layout();
-                },
+                    new Debit(this.openNewRoute.bind(this));
+                                  },
             },
             {
                 route: '/debit_add',
@@ -73,9 +70,8 @@ export class Router {
                 filePathTemplate: '/templates/pages/debit/debit_add.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new Debit_add();
-                    new Layout();
-                },
+                    new Debit_add(this.openNewRoute.bind(this));
+                                  },
             },
             {
                 route: '/debit_edit',
@@ -83,9 +79,8 @@ export class Router {
                 filePathTemplate: '/templates/pages/debit/debit_edit.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new Debit_edit();
-                    new Layout();
-                },
+                    new Debit_edit(this.openNewRoute.bind(this));
+                                 },
             },
             {
                 route: '/credit',
@@ -94,8 +89,7 @@ export class Router {
                 useLayout: '/templates/layout.html',
                 load: () => {
                     new Credit(this.openNewRoute.bind(this));
-                    new Layout();
-                },
+                                   },
             },
             {
                 route: '/credit_add',
@@ -103,9 +97,8 @@ export class Router {
                 filePathTemplate: '/templates/pages/credit/credit_add.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new Credit_add();
-                    new Layout();
-                },
+                    new Credit_add(this.openNewRoute.bind(this));
+                                 },
             },
             {
                 route: '/credit_edit',
@@ -113,9 +106,8 @@ export class Router {
                 filePathTemplate: '/templates/pages/credit/credit_edit.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new Credit_edit();
-                    new Layout();
-                },
+                    new Credit_edit(this.openNewRoute.bind(this));
+                                },
             },
             {
                 route: '/debit_credit',
@@ -123,9 +115,8 @@ export class Router {
                 filePathTemplate: '/templates/pages/debit-credit/debit_credit.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new Debit_credit();
-                    new Layout();
-                },
+                    new Debit_credit(this.openNewRoute.bind(this));
+                              },
             },
             {
                 route: '/item_create',
@@ -133,9 +124,8 @@ export class Router {
                 filePathTemplate: '/templates/pages/debit-credit/item_create.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new Item_create();
-                    new Layout();
-                },
+                    new Item_create(this.openNewRoute.bind(this));
+                                 },
             },
             {
                 route: '/item_edit',
@@ -143,9 +133,8 @@ export class Router {
                 filePathTemplate: '/templates/pages/debit-credit/item_edit.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new Item_edit();
-                    new Layout();
-                },
+                    new Item_edit(this.openNewRoute.bind(this));
+                               },
             },
             {
                 route: '/logout',
@@ -192,15 +181,16 @@ export class Router {
             if (newRoute.title) {
                 this.titlePageElement.innerText = newRoute.title + ' | Фронтенд проект на JS';
             }
-
+            // Собираем index.html страницу
             if (newRoute.filePathTemplate) {
                 //
                 //     // document.body.className = ''; // очищаем все классы перед загрузкой страницы
                 //
-                let contentBlock = this.contentPageElement;
+                let contentBlock = this.contentPageElement; // определяем место вставки HTML кода в шаблоне index.html
                 if (newRoute.useLayout) {
-
+                    // ищем и вставляем текст HTML страницы useLayout в index.html
                     this.contentPageElement.innerHTML = await fetch(newRoute.useLayout).then(response => response.text());
+                    // на полученной странице ищем место для следующей вставки кода
                     contentBlock = document.getElementById('content-layout');
                     //         document.body.classList.add('sidebar-mini');
                     //         document.body.classList.add('layout-fixed');
@@ -209,18 +199,19 @@ export class Router {
                     //         document.body.classList.remove('sidebar-mini');
                     //         document.body.classList.remove('layout-fixed');
                 }
+                // ищем и вставляем основной текст HTML открываемой страницы из filePathTemplate в index.html
                 contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());
                 //
 
             }
             //
-            //
+            // выполняем скрипт, необходимый для работы данной страницы
             if (newRoute.load && typeof newRoute.load === 'function') {
                 newRoute.load();
             }
 
         } else {
-            console.log('No route found');
+            // если route не найден
             window.location = '/404';
             history.pushState({}, '', '/404');// позволяет изменить URL без перезагрузки и добавить новую запись в историю браузера
             await this.activateRoute();
