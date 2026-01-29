@@ -1,5 +1,8 @@
+import {AuthUtils} from "../utils/auth-utils";
+
 export class Layout {
     constructor() {
+
         this.nav_collapse = document.getElementById('nav-collapse');
         this.btn_category = document.getElementById('btn-category');
         this.btn_category.addEventListener('click', this.borderVisable.bind(this))
