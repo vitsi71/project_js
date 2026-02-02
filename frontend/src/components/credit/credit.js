@@ -30,8 +30,7 @@ export class Credit {
         if (result.error || !response) {
             return alert(' Возникла ошибка при запросе категорий расходов Обратитесь в поддержку');
         }
-        console.log(response);
-        this.showCreditCategory(response);
+       this.showCreditCategory(response);
     }
 
     showCreditCategory(response) {
