@@ -85,8 +85,9 @@ body {
     padding-left: 60px;
     padding-top: 100px;
     width: 100%;
-    margin-left: 219px
+    margin-left: 219px;
 }
+
 @media (max-width: 768px) {
     .layout-content {
         padding-left: 30px;
@@ -156,8 +157,7 @@ input.no-icon[type="date"]::-webkit-calendar-picker-indicator {
 
     .logo-sidebar {
         padding: 40px 70px 4px 50px;
-        /*border-bottom:1px solid #D9D9D9 ;*/
-    }
+        }
 
     .nav-sidebar {
         padding: 46px 20px 4px 20px;

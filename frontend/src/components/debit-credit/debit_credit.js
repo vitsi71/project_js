@@ -1,5 +1,6 @@
 import {AuthUtils} from "../utils/auth-utils";
 import {Layout} from "../main/layout";
+import {HttpUtils} from "../utils/http-utils";
 
 export class Debit_credit {
     constructor(openNewRoute) {
@@ -14,5 +15,15 @@ export class Debit_credit {
         this.debit_credit_link=document.getElementById('debit_credit_link');
         this.debit_credit_link.classList.add('active');
         this.debit_credit_link.classList.remove('link-dark');
+
+        this.getOperations().then()
     }
+    async getOperations(){
+
+        const result = await HttpUtils.request('/operations/2');
+        console.log(result);
+
+    }
+
+
 }
