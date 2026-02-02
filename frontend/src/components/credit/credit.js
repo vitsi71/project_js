@@ -34,7 +34,7 @@ export class Credit {
     }
 
     showCreditCategory(response) {
-        const CreditCategories = document.getElementById('credit_categories');
+        const creditCategories = document.getElementById('credit_categories');
         const addCategory = document.getElementById('add_category');
 
 
@@ -65,7 +65,7 @@ export class Credit {
             buttonDelete.innerText = 'Удалить';
             buttonDelete.addEventListener('click', () => this.deleteCategory(response[i].id,response[i].title));
 
-            CreditCategories.insertBefore(category, addCategory);
+            creditCategories.insertBefore(category, addCategory);
         }
     }
 
