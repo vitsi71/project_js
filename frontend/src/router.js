@@ -175,7 +175,7 @@ export class Router {
     }
 
     // открвтие страницы по ссылке
-    async openNewRoute(url) {
+   async openNewRoute(url) {
         const currentRoute = window.location.pathname;//возвращает путь, следующий за именем домена в текущем URL-адресе
         history.pushState({}, '', url);// позволяет изменить URL без перезагрузки и добавить новую запись в историю браузера
         await this.activateRoute(null, currentRoute);

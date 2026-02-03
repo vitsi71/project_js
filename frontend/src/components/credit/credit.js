@@ -11,7 +11,7 @@ export class Credit {
         if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) {
             return this.openNewRoute('login');
         }
-        new Layout();
+        new Layout(this.openNewRoute);
         this.popupDelete = document.getElementById('popup_delete');
 
         document.getElementById('credit_link').classList.add('active');

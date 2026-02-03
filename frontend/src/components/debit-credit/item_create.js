@@ -9,7 +9,7 @@ export class Item_create {
         if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) {
             return this.openNewRoute('login');
         }
-        new Layout();
+        new Layout(this.openNewRoute);
 
         this.debit_credit_link=document.getElementById('debit_credit_link');
         this.debit_credit_link.classList.add('active');

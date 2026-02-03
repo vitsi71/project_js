@@ -7,6 +7,7 @@ export class AuthUtils {
     static userInfoTokenKey = 'userInfo';
 // записываем accessToken, refreshToken и userInfo если есть в localStorage
     static setAuthInfo(accessToken, refreshToken, userInfo = null) {
+        debugger
         localStorage.setItem(this.accessTokenKey, accessToken);
         localStorage.setItem(this.refreshTokenKey, refreshToken);
         if (userInfo) {
@@ -52,6 +53,8 @@ export class AuthUtils {
                 },
                 body: JSON.stringify({refreshToken: refreshToken}),
             });
+
+            debugger
             // если получен успешный ответ
             if (response && response.status === 200) {
                 // обрабатываем ответ

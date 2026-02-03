@@ -1,5 +1,5 @@
 import config from "../../../config/config.js";
-import {AuthUtils} from "./auth-utils";
+import {AuthUtils} from "./auth-utils.js";
 
 export class HttpUtils {
 
@@ -37,6 +37,7 @@ export class HttpUtils {
             response = await fetch(config.api + url, params);
             result.response = await response.json();
         } catch (e) {
+            debugger
             result.error = true;
             return result;
         }

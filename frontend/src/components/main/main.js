@@ -12,7 +12,7 @@ export class Main {
         if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) {
             return this.openNewRoute('login');
         }
-        new Layout()
+        new Layout(this.openNewRoute);
 
         new DebitPie();
      new CreditPie();
