@@ -27,7 +27,7 @@ export class Layout {
     async getBalance() {
         const result = await HttpUtils.request('/balance');
         const response = result.response;
-        if (result.error || !response || (response && !response.balance)) {
+        if (result.error || !response) {
             return alert(' Возникла ошибка при запросе баланса. Обратитесь в поддержку');
         } else {
             // this.balance.value = response.balance + '$';
