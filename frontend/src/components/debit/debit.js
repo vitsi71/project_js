@@ -24,7 +24,9 @@ export class Debit {
     //запрос уже созданных категорий расходов
     async getDebitCategory() {
         const result = await HttpUtils.request('/categories/income');
-
+        if (result.redirect) {
+            return this.openNewRoute(result.redirect);
+        }
         const response = result.response;
         if (result.error || !response) {
             return alert(' Возникла ошибка при запросе категорий доходов Обратитесь в поддержку');

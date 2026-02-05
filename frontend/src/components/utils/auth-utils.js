@@ -61,7 +61,7 @@ export class AuthUtils {
                 const tokens = await response.json();
                 if (tokens && !tokens.error) {
                     // записываем новые ключи в localStorage
-                    this.setAuthInfo(tokens.accessToken, tokens.refreshToken);
+                    this.setAuthInfo(tokens.tokens.accessToken, tokens.tokens.refreshToken);
                     result = true;
                 }
 

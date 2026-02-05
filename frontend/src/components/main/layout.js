@@ -1,4 +1,5 @@
 import {HttpUtils} from "../utils/http-utils";
+import config from "../../../config/config";
 
 
 export class Layout {
@@ -13,7 +14,12 @@ export class Layout {
         this.cancelButton = document.getElementById('button_popup_cancel');
 
         // вставка данных по пользователю из localStorage. JSON.parse преобразует строку JSON в массив
-        document.getElementById('user').innerText = JSON.parse(localStorage.userInfo).name;
+        try {
+            document.getElementById('user').innerText = JSON.parse(localStorage.userInfo).name;
+        } catch (e) {
+            document.getElementById('user').innerText ='ошибка запроса';
+        }
+
         this.balance = document.getElementById('balance');
         this.getBalance().then(value => {
             this.balance.value = value + '$';
@@ -26,14 +32,13 @@ export class Layout {
 //запрос баланса
     async getBalance() {
         const result = await HttpUtils.request('/balance');
+        if (result.redirect) {
+            return this.openNewRoute(result.redirect);
+        }
         const response = result.response;
         if (result.error || !response) {
             return alert(' Возникла ошибка при запросе баланса. Обратитесь в поддержку');
-        } else {
-            // this.balance.value = response.balance + '$';
         }
-        // this.balance.addEventListener('focusin', () => this.balance.value = response.balance);
-        // this.balance.addEventListener('focusout', () => this.balanceEdit(response.balance));
         return response.balance;
     }
 

@@ -4,60 +4,36 @@
                 <div class=" ">
                     <div class="input-group">
                         <select class="form-select" aria-label="type" disabled>
-                            <option value="debit">Доход</option>
-                            <option value="credit" selected>Расход</option>
+                            <option value="debit" id="select_debit">Доход</option>
+                            <option value="credit" id="select_credit">Расход</option>
                         </select>
                     </div>
                 </div>
 
-                <div class=" ">
                     <div class="input-group">
-                        <select class="form-select" aria-label="category">
-                            <option value="1" class="d-none">Депозиты</option>
-                            <option value="2" class="d-none">Зарплата</option>
-                            <option value="3" class="d-none">Сбережения</option>
-                            <option value="4" class="d-none">Инвестиции</option>
-                            <option value="5" selected>Еда</option>
-                            <option value="6">Жилье</option>
-                            <option value="7">Здоровье</option>
-                            <option value="2">Кафе</option>
-                            <option value="3">Авто</option>
-                            <option value="4">Одежда</option>
-                            <option value="5">Развлечения</option>
-                            <option value="6">Счета</option>
-                            <option value="7">Спорт</option>
+                        <select class="form-select" aria-label="category" id="select_category">
                         </select>
                     </div>
-                    <span id="category-error" class="error invalid-feedback"
-                          style="">Выберите категорию дохода/расхода</span>
-                </div>
 
-                <div class=" ">
                     <div class="input-group">
-                        <input type="number" class="form-control" placeholder="Сумма в $...">
-                    </div>
+                        <input type="text" class="form-control" placeholder="Сумма в $..." style="border-radius: 0 5px 5px 0"  id="amount_operation">
                     <span id="summa-error" class="error invalid-feedback" style="">Поле должно быть заполнено</span>
                 </div>
 
-                <div class=" ">
                     <div class="input-group">
-                        <input class="form-control no-icon" type="text" placeholder="Дата..." onfocus="(this.type='date')">
-                    </div>
+                        <input  class="form-control no-icon" type="date" placeholder="Дата..." style="border-radius: 0 5px 5px 0" id="date_operation">
                     <span id="date-error" class="error invalid-feedback" style="">Поле должно быть заполнено</span>
                 </div>
 
-                <div class=" ">
                     <div class="input-group">
-                        <textarea class="form-control" placeholder="Комментарий..."
-                                  id="1floatingTextarea"></textarea>
-                    </div>
+                        <textarea class="form-control" placeholder="Комментарий..." style="border-radius: 0 5px 5px 0"
+                                  id="comment_operation"></textarea>
                     <span id="info-error" class="error invalid-feedback" style="">Поле должно быть заполнено</span>
                 </div>
 
-
                 <div class="d-flex gap-10px mt-2">
-                    <button type="button" class="btn btn-success font-m fs-14px px-3 py-2">
-                        Создать
+                    <button type="button" class="btn btn-success font-m fs-14px px-3 py-2" id="save_btn">
+                        Сохранить
                     </button>
                     <a href="debit_credit" type="button" class="btn btn-danger font-m fs-14px px-3 py-2">
                         Отмена
