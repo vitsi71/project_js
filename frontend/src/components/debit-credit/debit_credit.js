@@ -10,7 +10,6 @@ export class Debit_credit {
         if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) {
             return this.openNewRoute('login');
         }
-        new Layout(this.openNewRoute);
 
         this.debit_credit_link = document.getElementById('debit_credit_link');
         this.debit_credit_link.classList.add('active');
@@ -23,12 +22,33 @@ export class Debit_credit {
         this.buttonCancel = document.getElementById('button_popup_cancel');
         this.buttonDelete = document.getElementById('button_popup_delete');
 
-        this.getOperations().then()
+        this.period='';
+        this.dateFrom=document.getElementById('interval_date1');
+        this.dateTo=document.getElementById('interval_date2');
+        this.dateFrom.value=new Date().toISOString().split('T')[0];
+        this.dateTo.value=new Date().toISOString().split('T')[0];
+
+        this.dateFrom.addEventListener('focusin',()=>this.dateFrom.classList.remove('no-icon'));
+        this.dateTo.addEventListener('focusin',()=>this.dateTo.classList.remove('no-icon'));
+        this.dateFrom.addEventListener('focusout',()=>{this.dateFrom.classList.add('no-icon');
+            if(this.intervalButton.checked){this.intervalButton.click()}});
+        this.dateTo.addEventListener('focusout',()=>{this.dateTo.classList.add('no-icon');
+            if(this.intervalButton.checked){this.intervalButton.click()}});
+
+        document.getElementById('today_btn').addEventListener('click',()=>{this.period='';this.getOperations().then()});
+        document.getElementById('week_btn').addEventListener('click',()=>{this.period='week';this.getOperations().then()});
+        document.getElementById('month_btn').addEventListener('click',()=>{this.period='month';this.getOperations().then()});
+        document.getElementById('year_btn').addEventListener('click',()=>{this.period='year';this.getOperations().then()});
+        document.getElementById('all_btn').addEventListener('click',()=>{this.period='all';this.getOperations().then()});
+        this.intervalButton=document.getElementById('interval_btn');
+        this.intervalButton.addEventListener('click',()=>{this.period='interval&dateFrom='+this.dateFrom.value+'&dateTo='+this.dateTo.value;this.getOperations().then()});
+
+        this.getOperations().then();
     }
 
     async getOperations() {
 
-        const result = await HttpUtils.request('/operations?period=all');
+        const result = await HttpUtils.request('/operations?period='+this.period);
         if (result.redirect) {
             return this.openNewRoute(result.redirect);
         }
@@ -61,7 +81,7 @@ export class Debit_credit {
                 type.innerHTML = 'расход';
             }
 
-            trElement.insertCell().innerText = response[i].category;
+            trElement.insertCell().innerText = response[i].category ? response[i].category : '';
             trElement.insertCell().innerText = response[i].amount + '$';
             trElement.insertCell().innerText = new Date(response[i].date).toLocaleDateString('ru-RU');
             trElement.insertCell().innerText = response[i].comment;

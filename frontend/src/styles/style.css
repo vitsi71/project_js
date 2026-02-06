@@ -18,17 +18,20 @@ body {
     font-family: RobotoRegular, sans-serif;
     color: #052c65;
 }
-.container{
+
+.container {
     max-width: 1440px;
     margin: 0 auto;
 }
+
 .form-control::placeholder {
     color: #6c757d;
     font-size: 15px;
     line-height: 24px;
 }
-.input-group.is-invalid{
-    border:1px solid red;
+
+.input-group.is-invalid {
+    border: 1px solid red;
     border-radius: 5px;
 }
 
@@ -92,7 +95,8 @@ body {
     .layout-content {
         padding-left: 30px;
         padding-top: 50px;
-        margin:0}
+        margin: 0
+    }
 }
 
 .text-base-color {
@@ -101,6 +105,10 @@ body {
 
 .table > :not(caption) > * > * {
     padding: 0.75rem 0.5rem;
+}
+
+input.no-icon {
+    width: 80px;
 }
 
 input.no-icon[type="date"]::-webkit-calendar-picker-indicator {
@@ -157,7 +165,7 @@ input.no-icon[type="date"]::-webkit-calendar-picker-indicator {
 
     .logo-sidebar {
         padding: 40px 70px 4px 50px;
-        }
+    }
 
     .nav-sidebar {
         padding: 46px 20px 4px 20px;
@@ -183,8 +191,9 @@ input.no-icon[type="date"]::-webkit-calendar-picker-indicator {
     border: 1px solid rgb(13, 110, 253);
     border-radius: 5px;
 
- }
-.nav-collapse.active{
+}
+
+.nav-collapse.active {
     border: 1px solid rgb(13, 110, 253);
     border-radius: 5px;
 
@@ -225,8 +234,8 @@ main {
 
 .btn-toggle.active {
     border: 1px solid rgb(13, 110, 253) !important;
-     color: white !important;
-     background-color: rgb(13, 110, 253);
+    color: white !important;
+    background-color: rgb(13, 110, 253);
     border-radius: 5px;
 
     svg {
@@ -261,6 +270,3 @@ a.nav-link:hover,
     background-color: #d2f4ea;
 }
 
-/*.scrollarea {*/
-/*    overflow-y: auto;*/
-/*}*/

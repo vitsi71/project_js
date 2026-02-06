@@ -2,34 +2,31 @@
             <div class="fs-40px font-m w-100 lh-1 pb-1">Главная</div>
 
             <div class="d-flex gap-20px align-items-center my-5 py-2">
-                <button type="button" class="btn btn-secondary font-m px-3" style="width: 100px;">
-                    Сегодня
-                </button>
 
-                <button type="button" class="btn btn-outline-secondary font-m px-3" style="width: 100px;">
-                    Неделя
-                </button>
+                    <input type="radio" class="btn-check" name="period" id="today_btn" autocomplete="off" checked>
+                    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="today_btn">Сегодня</label>
 
-                <button type="button" class="btn btn-outline-secondary font-m px-3" style="width: 100px;">
-                    Месяц
-                </button>
+                    <input type="radio" class="btn-check" name="period" id="week_btn" autocomplete="off">
+                    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="week_btn">Неделя</label>
 
-                <button type="button" class="btn btn-outline-secondary font-m px-3" style="width: 100px;">
-                    Год
-                </button>
+                    <input type="radio" class="btn-check" name="period" id="month_btn" autocomplete="off">
+                    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="month_btn">Месяц</label>
 
-                <button type="button" class="btn btn-outline-secondary font-m px-3" style="width: 100px;">
-                    Все
-                </button>
+                    <input type="radio" class="btn-check" name="period" id="year_btn" autocomplete="off">
+                    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="year_btn">Год</label>
 
-                <button type="button" class="btn btn-outline-secondary font-m px-3" style="width: 100px;">
-                    Интервал
-                </button>
-                с <input class="border border-0 no-icon" style="width: 80px" type="text" placeholder="Дата" onfocus="(this.type='date')">
-                по <input class="border border-0 no-icon" style="width: 80px" type="text" placeholder="Дата" onfocus="(this.type='date')">
-           
-            </div>
+                    <input type="radio" class="btn-check" name="period" id="all_btn" autocomplete="off">
+                    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="all_btn">Все</label>
 
+                    <input type="radio" class="btn-check" name="period" id="interval_btn" autocomplete="off">
+                    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="interval_btn">Интервал</label>
+
+                    с <input class="border border-0 no-icon" type="date" placeholder="Дата"
+                             id="interval_date1">
+                    по <input class="border border-0 no-icon" type="date" placeholder="Дата"
+                              id="interval_date2">
+
+                </div>
 <!--Диаграммы -->
 
             <div style="display: flex;">

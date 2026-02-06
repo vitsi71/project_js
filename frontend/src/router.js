@@ -11,6 +11,7 @@ import {Item_create} from "./components/debit-credit/item_create";
 import {Item_edit} from "./components/debit-credit/item_edit";
 import {Main} from "./components/main/main";
 import {Logout} from "./components/auth/logout";
+import {Layout} from "./components/main/layout";
 
 
 export class Router {
@@ -28,6 +29,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/main.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new Layout(this.openNewRoute);
                     new Main(this.openNewRoute.bind(this));
                                   },
             },
@@ -114,6 +116,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/debit-credit/debit_credit.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    new Layout(this.openNewRoute);
                     new Debit_credit(this.openNewRoute.bind(this));
                               },
             },
