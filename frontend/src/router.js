@@ -11,8 +11,6 @@ import {Item_create} from "./components/debit-credit/item_create";
 import {Item_edit} from "./components/debit-credit/item_edit";
 import {Main} from "./components/main/main";
 import {Logout} from "./components/auth/logout";
-import {Layout} from "./components/main/layout";
-
 
 export class Router {
     constructor() {
@@ -29,15 +27,8 @@ export class Router {
                 filePathTemplate: '/templates/pages/main.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new Layout(this.openNewRoute);
                     new Main(this.openNewRoute.bind(this));
                                   },
-            },
-            {
-                route: '/404',
-                title: 'Страница не найдена',
-                filePathTemplate: '/templates/pages/404.html',
-                useLayout: false
             },
             {
                 route: '/login',
@@ -116,7 +107,6 @@ export class Router {
                 filePathTemplate: '/templates/pages/debit-credit/debit_credit.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
-                    new Layout(this.openNewRoute);
                     new Debit_credit(this.openNewRoute.bind(this));
                               },
             },
@@ -206,7 +196,6 @@ export class Router {
                 // ищем и вставляем основной текст HTML открываемой страницы из filePathTemplate в index.html
                 contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());
                 //
-
             }
             //
             // выполняем скрипт, необходимый для работы данной страницы
@@ -216,8 +205,8 @@ export class Router {
 
         } else {
             // если route не найден
-            window.location = '/404';
-            history.pushState({}, '', '/404');// позволяет изменить URL без перезагрузки и добавить новую запись в историю браузера
+            window.location = '/';
+            history.pushState({}, '', '/');// позволяет изменить URL без перезагрузки и добавить новую запись в историю браузера
             await this.activateRoute();
         }
     }

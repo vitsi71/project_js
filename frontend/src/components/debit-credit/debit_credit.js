@@ -6,6 +6,8 @@ export class Debit_credit {
     constructor(openNewRoute) {
         this.openNewRoute = openNewRoute;
 
+        new Layout(this.openNewRoute);
+
         // проверяем, была ли сделана авторизация. Если  нет accessToken или refreshToken - открываем страницу login
         if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) {
             return this.openNewRoute('login');

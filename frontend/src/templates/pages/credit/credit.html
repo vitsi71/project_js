@@ -1,20 +1,24 @@
 <div class="fs-40px font-m w-100 lh-1">Расходы</div>
 <div class="d-flex gap-20px flex-wrap mt-4 pt-3" id="credit_categories">
 
-<!--    <div class="content-category-block">-->
-<!--        <span class="font-m w-100 lh-1">Еда</span>-->
-<!--        <div>-->
-<!--            <a href="/credit_edit?name= Фото" type="button" class="btn btn-primary font-m fs-14px px-3" >-->
-<!--                Редактировать-->
-<!--            </a>-->
-<!--            <button type="button" class="btn btn-danger font-m fs-14px px-3">-->
-<!--                Удалить-->
-<!--            </button>-->
-<!--        </div>-->
 
-<!--    </div>-->
+    <!--    Шаблон создаваемой категории------------------------------->
+    <!--    <div class="content-category-block">-->
+    <!--        <span class="font-m w-100 lh-1">Еда</span>-->
+    <!--        <div>-->
+    <!--            <a href="/credit_edit?name= Фото" type="button" class="btn btn-primary font-m fs-14px px-3" >-->
+    <!--                Редактировать-->
+    <!--            </a>-->
+    <!--            <button type="button" class="btn btn-danger font-m fs-14px px-3">-->
+    <!--                Удалить-->
+    <!--            </button>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    конец шаблона создаваемой категории------------------------------->
 
-    <a href="credit_add" class="nav-link content-category-block d-flex align-items-center justify-content-center text-decoration-none" id="add_category">
+    <a href="credit_add"
+       class="nav-link content-category-block d-flex align-items-center justify-content-center text-decoration-none"
+       id="add_category">
         <span class="font-m" style="color: #ced4da;">+</span>
     </a>
 </div>
@@ -22,7 +26,9 @@
 <div class="popup d-none" id="popup_delete">
     <div class="popup-info mx-1">
         <div class="popup-text">
-            <div class="font-m w-100 lh-1 mb-3 pb-1">Вы действительно хотите удалить категорию <span id="text_category"></span>? Связанные расходы останутся без категории.</div>
+            <div class="font-m w-100 lh-1 mb-3 pb-1">Вы действительно хотите удалить категорию <span
+                    id="text_category"></span>? Связанные расходы останутся без категории.
+            </div>
             <div class="d-flex gap-12px justify-content-center">
                 <button type="button" class="btn btn-success font-m fs-14px px-3 py-2" id="button_popup_cancel">
                     Не удалять

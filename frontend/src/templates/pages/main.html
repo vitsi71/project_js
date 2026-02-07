@@ -1,46 +1,56 @@
+<div class="fs-40px font-m w-100 lh-1 pb-1">Главная</div>
 
-            <div class="fs-40px font-m w-100 lh-1 pb-1">Главная</div>
+<div class="d-flex gap-20px align-items-center my-5 py-2">
 
-            <div class="d-flex gap-20px align-items-center my-5 py-2">
+    <input type="radio" class="btn-check" name="period" id="today_btn" autocomplete="off" checked>
+    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="today_btn">Сегодня</label>
 
-                    <input type="radio" class="btn-check" name="period" id="today_btn" autocomplete="off" checked>
-                    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="today_btn">Сегодня</label>
+    <input type="radio" class="btn-check" name="period" id="week_btn" autocomplete="off">
+    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="week_btn">Неделя</label>
 
-                    <input type="radio" class="btn-check" name="period" id="week_btn" autocomplete="off">
-                    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="week_btn">Неделя</label>
+    <input type="radio" class="btn-check" name="period" id="month_btn" autocomplete="off">
+    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="month_btn">Месяц</label>
 
-                    <input type="radio" class="btn-check" name="period" id="month_btn" autocomplete="off">
-                    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="month_btn">Месяц</label>
+    <input type="radio" class="btn-check" name="period" id="year_btn" autocomplete="off">
+    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="year_btn">Год</label>
 
-                    <input type="radio" class="btn-check" name="period" id="year_btn" autocomplete="off">
-                    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="year_btn">Год</label>
+    <input type="radio" class="btn-check" name="period" id="all_btn" autocomplete="off">
+    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="all_btn">Все</label>
 
-                    <input type="radio" class="btn-check" name="period" id="all_btn" autocomplete="off">
-                    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="all_btn">Все</label>
+    <input type="radio" class="btn-check" name="period" id="interval_btn" autocomplete="off">
+    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="interval_btn">Интервал</label>
 
-                    <input type="radio" class="btn-check" name="period" id="interval_btn" autocomplete="off">
-                    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="interval_btn">Интервал</label>
+    с <input class="border border-0 no-icon" type="date" placeholder="Дата"
+             id="interval_date1">
+    по <input class="border border-0 no-icon" type="date" placeholder="Дата"
+              id="interval_date2">
 
-                    с <input class="border border-0 no-icon" type="date" placeholder="Дата"
-                             id="interval_date1">
-                    по <input class="border border-0 no-icon" type="date" placeholder="Дата"
-                              id="interval_date2">
-
-                </div>
+</div>
 <!--Диаграммы -->
 
-            <div style="display: flex;">
-                <div style="text-align: center;">
-                    <span style="font-size: 24px;padding-right: 84px">Доходы</span>
-                    <div style="width: 437px;border-right:1px solid #D9D9D9;padding-right: 84px ">
-                        <canvas id="debit-pie"></canvas>
-                    </div>
-                </div>
-                <div style="text-align: center;">
-                    <span style="font-size: 24px;padding-left: 84px">Расходы</span>
-                    <div style="width: 437px; padding-left: 84px;">
-                        <canvas id="credit-pie"></canvas>
-                    </div>
-                </div>
+<div style="display: flex;">
+    <div style="text-align: center;">
+        <span style="font-size: 24px;padding-right: 84px">Доходы</span>
+        <div style="width: 437px;border-right:1px solid #D9D9D9;padding-right: 84px ">
+            <!--             сообщение если операции не найдены-->
+            <div class="content-category-block " style="margin-top: 100px" id="debit_info">Данные за этот период
+                отсутствуют
             </div>
+            <!--            тело диаграммы доходы-->
+            <canvas id="debit-pie"></canvas>
+        </div>
+    </div>
+    <div style="text-align: center;">
+        <span style="font-size: 24px;padding-left: 84px">Расходы</span>
+
+        <div style="width: 437px; padding-left: 84px;">
+            <!--             сообщение если операции не найдены-->
+            <div class="content-category-block" style="margin-top: 100px" id="credit_info">Данные за этот период
+                отсутствуют
+            </div>
+            <!--            тело диаграммы расходы-->
+            <canvas id="credit-pie"></canvas>
+        </div>
+    </div>
+</div>
 
