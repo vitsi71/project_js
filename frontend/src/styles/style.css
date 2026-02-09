@@ -42,7 +42,7 @@ body {
 .container-form {
     max-width: 405px;
     min-height: 100vh;
-    padding:0 20px ;
+    padding: 20px 0;
 }
 
 .input-group-text {
