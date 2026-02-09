@@ -1,4 +1,4 @@
-<div class="fs-40px font-m w-100 lh-1">Доходы и расходы</div>
+<div class="fs-h1 font-m w-100 lh-1">Доходы и расходы</div>
 
 <div class="d-flex gap-10px w-100 mt-4 pt-3">
     <a href="item_create?type=income" type="button" class="btn btn-success font-m fs-14px px-3 py-2">
@@ -9,32 +9,35 @@
     </a>
 </div>
 
-<div class="d-flex gap-20px align-items-center my-4 py-3">
-
-    <input type="radio" class="btn-check" name="period" id="today_btn" autocomplete="off" checked>
-    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="today_btn">Сегодня</label>
-
-    <input type="radio" class="btn-check" name="period" id="week_btn" autocomplete="off">
-    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="week_btn">Неделя</label>
-
-    <input type="radio" class="btn-check" name="period" id="month_btn" autocomplete="off">
-    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="month_btn">Месяц</label>
-
-    <input type="radio" class="btn-check" name="period" id="year_btn" autocomplete="off">
-    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="year_btn">Год</label>
-
-    <input type="radio" class="btn-check" name="period" id="all_btn" autocomplete="off">
-    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="all_btn">Все</label>
-
-    <input type="radio" class="btn-check" name="period" id="interval_btn" autocomplete="off">
-    <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="interval_btn">Интервал</label>
-
-    с <input class="border border-0 no-icon" type="date" placeholder="Дата"
-             id="interval_date1">
-    по <input class="border border-0 no-icon" type="date" placeholder="Дата"
-              id="interval_date2">
-
-</div>
+<div class=" d-flex gap-20px align-items-center my-lg-5 py-lg-2 my-3 flex-wrap">
+    <div>
+        <input type="radio" class="btn-check" name="period" id="today_btn" autocomplete="off" checked>
+        <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="today_btn">Сегодня</label>
+    </div>
+    <div>
+        <input type="radio" class="btn-check" name="period" id="week_btn" autocomplete="off">
+        <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="week_btn">Неделя</label>
+    </div>
+    <div>
+        <input type="radio" class="btn-check" name="period" id="month_btn" autocomplete="off">
+        <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="month_btn">Месяц</label>
+    </div>
+    <div>
+        <input type="radio" class="btn-check" name="period" id="year_btn" autocomplete="off">
+        <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="year_btn">Год</label>
+    </div>
+    <div>
+        <input type="radio" class="btn-check" name="period" id="all_btn" autocomplete="off">
+        <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="all_btn">Все</label>
+    </div>
+    <div class="d-flex gap-20px align-items-center" >
+        <input type="radio" class="btn-check" name="period" id="interval_btn" autocomplete="off">
+        <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="interval_btn">Интервал</label>
+    </div>
+    <div>
+        с <input class="border border-0 no-icon" type="date" placeholder="Дата" id="interval_date1">
+        по <input class="border border-0 no-icon" type="date" placeholder="Дата" id="interval_date2">
+    </div>
 
 
 <hr class="m-0">
