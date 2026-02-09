@@ -1,4 +1,3 @@
-
 import {AuthUtils} from "../utils/auth-utils";
 import {HttpUtils} from "../utils/http-utils";
 import Chart from "chart.js/auto";
@@ -77,6 +76,7 @@ export class Main {
 
         this.getOperations().then();
     }
+
 // построение диаграммы
     initChart(canvasId) {
         const chart = new Chart(
@@ -122,6 +122,7 @@ export class Main {
         }
         this.showOperations(response);
     }
+
 //создание массивов операций по доходам и расходам
     showOperations(response) {
         const operationsDebit = [];
@@ -150,11 +151,25 @@ export class Main {
 
 // Обновить диаграмму Доходы
         const debitInfo = document.getElementById('debit_info');
-        operationsDebit.length ? debitInfo.classList.add('d-none') : debitInfo.classList.remove('d-none');
+        const debitCanvas = document.getElementById('debit-pie');
+        if (operationsDebit.length) {
+            debitInfo.classList.add('d-none');
+            debitCanvas.classList.remove('d-none');
+        } else {
+            debitInfo.classList.remove('d-none');
+            debitCanvas.classList.add('d-none');
+        }
         this.changeData(operationsDebit, this.debitChart);
 // Обновить диаграмму Расходы
         const creditInfo = document.getElementById('credit_info');
-        operationsCredit.length ? creditInfo.classList.add('d-none') : creditInfo.classList.remove('d-none')
+        const creditCanvas = document.getElementById('credit-pie');
+        if (operationsCredit.length) {
+            creditInfo.classList.add('d-none');
+            creditCanvas.classList.remove('d-none');
+        } else {
+            creditInfo.classList.remove('d-none');
+            creditCanvas.classList.add('d-none');
+        }
         this.changeData(operationsCredit, this.creditChart);
 
 

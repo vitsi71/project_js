@@ -42,7 +42,7 @@ body {
 .container-form {
     max-width: 405px;
     min-height: 100vh;
-    padding: 20px 0;
+    padding:0 20px ;
 }
 
 .input-group-text {
@@ -80,23 +80,14 @@ body {
     line-height: 24px;
 }
 
-.fs-40px {
+.fs-h1 {
     font-size: 40px;
 }
 
 .layout-content {
-    padding-left: 60px;
-    padding-top: 100px;
+    padding: 100px 20px 0 60px;
     width: 100%;
     margin-left: 219px;
-}
-
-@media (max-width: 768px) {
-    .layout-content {
-        padding-left: 30px;
-        padding-top: 50px;
-        margin: 0
-    }
 }
 
 .text-base-color {
@@ -115,7 +106,9 @@ input.no-icon[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
 }
 
-
+.block-canvas{
+    gap: 84px;
+  }
 .popup {
     position: fixed;
     top: 0;
@@ -149,7 +142,7 @@ input.no-icon[type="date"]::-webkit-calendar-picker-indicator {
 .content-category-block {
     border: 1px solid #ced4da;
     border-radius: 12px;
-    width: 352px;
+  width: min(352px,100%);
     height: 121px;
     font-size: 28px;
     color: #290661;
@@ -169,7 +162,6 @@ input.no-icon[type="date"]::-webkit-calendar-picker-indicator {
 
     .nav-sidebar {
         padding: 46px 20px 4px 20px;
-        /*border-bottom:1px solid #D9D9D9 ;*/
     }
 
     .link-dark {

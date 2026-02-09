@@ -1,5 +1,8 @@
-<div class="container-fluid px-0">
+<div class="navbar navbar-expand-md container-fluid px-0">
     <div class="d-flex">
+        <button class="navbar-toggler position-fixed" style="top: 20px;right: 20px;width: fit-content" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Переключатель навигации">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <nav id="sidebarMenu" class="d-md-block sidebar collapse fixed-top" style="width: 220px">
             <aside class="col container-sidebar d-flex flex-column" style="max-width: 219px;height:100vh;">
                 <div class="logo-sidebar w-100">
@@ -84,7 +87,7 @@
 
                 <div class="d-flex ms-3 ps-1 align-items-center">Баланс: <input id="balance" type="text" class="form-control" style="color: #0D6EFD; border: none" onblur="(this.type='text')" onfocus="(this.type='number')" ></div>
 
-                <hr>
+                   <hr>
 
                 <div class="dropdown">
                     <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
@@ -101,7 +104,7 @@
                         </div>
                         <strong><span id="user" class="text-wrap px-0">Roman Chernov</span></strong>
                     </a>
-                    <ul class="dropdown-menu text-small shadow" style="">
+                    <ul class="dropdown-menu text-small shadow" style="top: -40px; left: 30px;">
                         <li><a class="dropdown-item" href="/logout"><span>Выход</span></a></li>
                     </ul>
                 </div>
