@@ -1,5 +1,6 @@
 import {AuthUtils} from "../utils/auth-utils";
 import {HttpUtils} from "../utils/http-utils";
+import {Debit_credit} from "./debit_credit";
 
 export class Item_edit {
     constructor(openNewRoute) {
@@ -16,13 +17,19 @@ export class Item_edit {
 
         const urlParams = new URLSearchParams(window.location.search);// получение параметров из URL
         this.id = urlParams.get('id');
+        this.period = urlParams.get('period');
+        if(this.period==='interval'){
+            this.period= urlParams.get('period')+'&dateFrom='+urlParams.get('dateFrom')+'&dateTo='+urlParams.get('dateTo');
+        }
         this.type = 'income';
         this.selectCategory = document.getElementById('select_category');
         this.amountOperation = document.getElementById('amount_operation');
         this.dateOperation = document.getElementById('date_operation');
         this.commentOperation = document.getElementById('comment_operation');
         this.val = 0;
-        this.saveButton = document.getElementById('save_btn')
+        this.saveButton = document.getElementById('save_btn');
+        document.getElementById('cancel_edit_btn').href='debit_credit?period='+this.period;
+        this.saveButton.href='debit_credit?period='+this.period;
 
         this.editOperation().then();
     }
@@ -89,8 +96,7 @@ export class Item_edit {
             if (result.error || !response) {
                 return alert(' Возникла ошибка при редактировании операции. Обратитесь в поддержку');
             }
-                this.openNewRoute('debit_credit');
-            }
+              }
 
         })
 
@@ -99,8 +105,7 @@ export class Item_edit {
 
     validateForm(Element) {
         let isValid = true;
-        console.log(Element.value);
-        if (Element.value && !(Element.value === '$')) {
+         if (Element.value && !(Element.value === '$')) {
             Element.classList.remove('is-invalid');
         } else {
             Element.classList.add('is-invalid');

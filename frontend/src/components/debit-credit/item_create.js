@@ -16,13 +16,19 @@ export class Item_create {
 
         const urlParams = new URLSearchParams(window.location.search);// получение параметров из URL
         this.type = urlParams.get('type');
+        this.period = urlParams.get('period');
+        if(this.period==='interval'){
+            this.period= urlParams.get('period')+'&dateFrom='+urlParams.get('dateFrom')+'&dateTo='+urlParams.get('dateTo');
+        }
         this.selectType = document.getElementById('select_type');
         this.selectCategory = document.getElementById('select_category');
         this.amountOperation = document.getElementById('amount_operation');
         this.dateOperation = document.getElementById('date_operation');
         this.commentOperation = document.getElementById('comment_operation');
         this.val = 0;
-        this.saveButton = document.getElementById('save_btn')
+        this.saveButton = document.getElementById('save_btn');
+        this.saveButton.href='debit_credit?period='+this.period;
+        document.getElementById('cancel_create_btn').href='debit_credit?period='+this.period;
 
         this.createOperation().then();
     }
@@ -73,7 +79,7 @@ export class Item_create {
                 if (result.error || !response) {
                     return alert(' Возникла ошибка при создании операции. Обратитесь в поддержку');
                 }
-                this.openNewRoute('debit_credit');
+                // this.openNewRoute('debit_credit');
             }
         })
     }

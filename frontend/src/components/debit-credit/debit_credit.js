@@ -21,44 +21,76 @@ export class Debit_credit {
         this.buttonCancel = document.getElementById('button_popup_cancel');
         this.buttonDelete = document.getElementById('button_popup_delete');
 
-        this.period='';
-        this.dateFrom=document.getElementById('interval_date1');
-        this.dateTo=document.getElementById('interval_date2');
-        this.dateFrom.value=new Date().toISOString().split('T')[0];
-        this.dateTo.value=new Date().toISOString().split('T')[0];
+        const urlParams = new URLSearchParams(window.location.search);// получение параметров из URL
 
-        this.dateFrom.addEventListener('focusin',()=>this.dateFrom.classList.remove('no-icon'));
-        this.dateTo.addEventListener('focusin',()=>this.dateTo.classList.remove('no-icon'));
-        this.dateFrom.addEventListener('focusout',()=>{this.dateFrom.classList.add('no-icon');
-            if(this.intervalButton.checked){this.intervalButton.click()}});
-        this.dateTo.addEventListener('focusout',()=>{this.dateTo.classList.add('no-icon');
-            if(this.intervalButton.checked){this.intervalButton.click()}});
-        this.page=this.today;
-        this.today=document.getElementById('today_btn');
-        this.week=document.getElementById('week_btn');
-        this.month=document.getElementById('month_btn');
-        this.year=document.getElementById('year_btn');
-        this.all=document.getElementById('all_btn');
-        this.intervalButton=document.getElementById('interval_btn');
+        this.period = urlParams.get('period') ? urlParams.get('period') : '';
+        if(this.period==='interval'){
+            this.period= urlParams.get('period')+'&dateFrom='+urlParams.get('dateFrom')+'&dateTo='+urlParams.get('dateTo');
+        }
 
-        this.today.addEventListener('click',()=>{this.period='';this.getOperations().then();this.page=this.today});
-        this.week.addEventListener('click',()=>{this.period='week';this.getOperations().then();this.page=this.week});
-        this.month.addEventListener('click',()=>{this.period='month';this.getOperations().then();this.page=this.month});
-        this.year.addEventListener('click',()=>{this.period='year';this.getOperations().then();this.page=this.year});
-        this.all.addEventListener('click',()=>{this.period='all';this.getOperations().then();this.page=this.all});
-        this.intervalButton.addEventListener('click',()=>{this.period='interval&dateFrom='+this.dateFrom.value+'&dateTo='+this.dateTo.value;this.getOperations().then();this.page=this.intervalButton});
+        this.dateFrom = document.getElementById('interval_date1');
+        this.dateTo = document.getElementById('interval_date2');
+        this.dateFrom.value = urlParams.get('dateFrom') ? new Date(urlParams.get('dateFrom')).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+        this.dateTo.value = urlParams.get('dateTo') ? new Date(urlParams.get('dateTo')).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+
+        this.dateFrom.addEventListener('focusin', () => this.dateFrom.classList.remove('no-icon'));
+        this.dateTo.addEventListener('focusin', () => this.dateTo.classList.remove('no-icon'));
+        this.dateFrom.addEventListener('focusout', () => {
+            this.dateFrom.classList.add('no-icon');
+            if (this.intervalButton.checked) {
+                this.intervalButton.click()
+            }
+        });
+        this.dateTo.addEventListener('focusout', () => {
+            this.dateTo.classList.add('no-icon');
+            if (this.intervalButton.checked) {
+                this.intervalButton.click()
+            }
+        });
+
+        this.today = document.getElementById('today_btn');
+        this.week = document.getElementById('week_btn');
+        this.month = document.getElementById('month_btn');
+        this.year = document.getElementById('year_btn');
+        this.all = document.getElementById('all_btn');
+        this.intervalButton = document.getElementById('interval_btn');
+
+
+
+        this.today.addEventListener('click', () => {
+            this.period = '';
+            this.getOperations().then();
+        });
+        this.week.addEventListener('click', () => {
+            this.period = 'week';
+            this.getOperations().then();
+        });
+        this.month.addEventListener('click', () => {
+            this.period = 'month';
+            this.getOperations().then();
+
+        });
+        this.year.addEventListener('click', () => {
+            this.period = 'year';
+            this.getOperations().then();
+
+        });
+        this.all.addEventListener('click', () => {
+            this.period = 'all';
+            this.getOperations().then();
+        });
+        this.intervalButton.addEventListener('click', () => {
+            this.period = 'interval&dateFrom=' + this.dateFrom.value + '&dateTo=' + this.dateTo.value;
+            this.getOperations().then();
+            this.page = this.intervalButton
+        });
 
         this.getOperations().then();
     }
 
-    // static openTable(){
-    //     const event = new Event('click') ;
-    //     this.page.dispatchEvent(event);
-    // }
-
     async getOperations() {
 
-        const result = await HttpUtils.request('/operations?period='+this.period);
+        const result = await HttpUtils.request('/operations?period=' + this.period);
         if (result.redirect) {
             return this.openNewRoute(result.redirect);
         }
@@ -117,7 +149,7 @@ export class Debit_credit {
 
             const iconEdit = document.createElement('a');
             icon.appendChild(iconEdit);
-            iconEdit.href = 'item_edit?id=' + response[i].id;
+            iconEdit.href = 'item_edit?id=' + response[i].id + '&period=' + this.period;
             iconEdit.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">' +
                 '<path d="M12.1465 0.146447C12.3417 -0.0488155 12.6583 -0.0488155 12.8536 0.146447L15.8536 3.14645C16.0488 3.34171 16.0488 3.65829 15.8536 3.85355L5.85357 13.8536C5.80569 13.9014 5.74858 13.9391 5.68571 13.9642L0.68571 15.9642C0.500001 16.0385 0.287892 15.995 0.146461 15.8536C0.00502989 15.7121 -0.0385071 15.5 0.0357762 15.3143L2.03578 10.3143C2.06092 10.2514 2.09858 10.1943 2.14646 10.1464L12.1465 0.146447ZM11.2071 2.5L13.5 4.79289L14.7929 3.5L12.5 1.20711L11.2071 2.5ZM12.7929 5.5L10.5 3.20711L4.00001 9.70711V10H4.50001C4.77616 10 5.00001 10.2239 5.00001 10.5V11H5.50001C5.77616 11 6.00001 11.2239 6.00001 11.5V12H6.29291L12.7929 5.5ZM3.03167 10.6755L2.92614 10.781L1.39754 14.6025L5.21903 13.0739L5.32456 12.9683C5.13496 12.8973 5.00001 12.7144 5.00001 12.5V12H4.50001C4.22387 12 4.00001 11.7761 4.00001 11.5V11H3.50001C3.28561 11 3.10272 10.865 3.03167 10.6755Z"'
                 + ' fill="black"/>'
@@ -126,6 +158,12 @@ export class Debit_credit {
             tbodyOperations.appendChild(trElement);
 
         }
+        document.getElementById('create_expense').href='item_create?type=expense&period='+ this.period;
+        document.getElementById('create_income').href='item_create?type=income&period='+ this.period;
+        if (this.period) {
+            document.getElementById(this.period.split('&')[0] + '_btn').checked = true;
+        }
+
     }
 
 
