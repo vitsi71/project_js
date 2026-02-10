@@ -1,5 +1,4 @@
 import {AuthUtils} from "../utils/auth-utils";
-import {Layout} from "../main/layout";
 import {HttpUtils} from "../utils/http-utils";
 
 export class Credit_edit {
@@ -10,8 +9,7 @@ export class Credit_edit {
         if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) {
             return this.openNewRoute('login');
         }
-        new Layout(this.openNewRoute);
-        this.input = document.getElementById('credit_edit_name');
+         this.input = document.getElementById('credit_edit_name');
         document.getElementById('credit_link').classList.add('active');
         document.getElementById('btn-category').classList.add('active');
         document.getElementById('home-collapse').classList.add('show');

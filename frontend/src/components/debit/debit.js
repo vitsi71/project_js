@@ -1,5 +1,4 @@
 import {AuthUtils} from "../utils/auth-utils";
-import {Layout} from "../main/layout";
 import {HttpUtils} from "../utils/http-utils";
 
 export class Debit {
@@ -10,8 +9,7 @@ export class Debit {
         if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) {
             return this.openNewRoute('login');
         }
-        new Layout(this.openNewRoute);
-        this.popupDelete = document.getElementById('popup_delete');
+            this.popupDelete = document.getElementById('popup_delete');
 
         document.getElementById('debit_link').classList.add('active');
         document.getElementById('btn-category').classList.add('active');

@@ -1,7 +1,6 @@
 import {AuthUtils} from "../utils/auth-utils";
 import {HttpUtils} from "../utils/http-utils";
 import Chart from "chart.js/auto";
-import {Layout} from "./layout";
 
 
 export class Main {
@@ -12,7 +11,6 @@ export class Main {
         if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) {
             return this.openNewRoute('login');
         }
-        new Layout(this.openNewRoute);
 
         //построение диаграмм
         this.debitChart = this.initChart('debit-pie');

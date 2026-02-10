@@ -1,5 +1,4 @@
 import {AuthUtils} from "../utils/auth-utils";
-import {Layout} from "../main/layout";
 import {HttpUtils} from "../utils/http-utils";
 
 export class Debit_add {
@@ -10,7 +9,6 @@ export class Debit_add {
         if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) {
             return this.openNewRoute('login');
         }
-        new Layout(this.openNewRoute);
 
         document.getElementById('debit_link').classList.add('active');
         document.getElementById('btn-category').classList.add('active');

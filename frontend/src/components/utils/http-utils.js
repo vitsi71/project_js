@@ -37,7 +37,6 @@ export class HttpUtils {
             response = await fetch(config.api + url, params);
             result.response = await response.json();
         } catch (e) {
-            debugger
             result.error = true;
             return result;
         }
@@ -47,14 +46,14 @@ export class HttpUtils {
             if (useAuth && response.status === 401) {
                 // 1 - токена нет
                 if (!token) {
-                    result.redirect = '/login';
+                    return result.redirect = '/login';
                 } else {
                     // 2 - токен просрочен
                     const updateTokenResult = await AuthUtils.updateRefreshToken();
 
-                    if(updateTokenResult){
+                    if (updateTokenResult) {
                         //запрос повторно
-                        return this.request( url,method,useAuth, body);
+                        return this.request(url, method, useAuth, body);
 
                     } else {
                         result.redirect = '/login';

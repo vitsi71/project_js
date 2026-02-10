@@ -10,24 +10,20 @@ display: none;
     }
 
 }
-@media (max-width: 1218px) {
+@media (max-width: 1235px) {
     .layout-content {
-        padding-left: 50px;
+        padding-left: 269px;
         padding-top: 70px;
     }
-
-}
-@media (max-width: 1162px) {
-    .layout-content {
-        padding-left: 50px;
-        padding-top: 70px;
+    .block-canvas{
+        justify-content: center;
     }
 
 }
 
 @media (max-width: 991px) {
     .layout-content {
-        padding-left: 40px;
+        padding-left: 259px;
         padding-top: 60px;
     }
 

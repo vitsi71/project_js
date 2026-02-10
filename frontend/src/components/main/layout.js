@@ -10,8 +10,8 @@ export class Layout {
         this.btn_category.addEventListener('click', this.borderVisable.bind(this));
 
         this.popupEdit = document.getElementById('popup_edit');
-        this.saveButton = document.getElementById('button_popup_save');
-        this.cancelButton = document.getElementById('button_popup_cancel');
+        this.saveButton = document.getElementById('layout_popup_save');
+        this.cancelButton = document.getElementById('layout_popup_cancel');
 
         // вставка данных по пользователю из localStorage. JSON.parse преобразует строку JSON в массив
         try {
@@ -44,14 +44,14 @@ export class Layout {
 
 //изменение баланса
     balanceEdit(balance) {
-        const newBalance = this.balance.value;
+        let newBalance = this.balance.value;
 
         if (!newBalance || Number(newBalance) === Number(balance)) {
             this.balance.value = balance + '$';
         } else {
             this.popupEdit.classList.remove('d-none');
             document.getElementById('new-balance').innerText = newBalance;
-            this.saveButton.addEventListener('click', () => this.editBalance(newBalance));
+            this.saveButton.addEventListener('click', () => this.editBalance());
             this.cancelButton.addEventListener('click', () => {
                 this.popupEdit.classList.add('d-none');
                 this.balance.value = balance + '$';
@@ -60,15 +60,16 @@ export class Layout {
     }
 
     //сохранение измененного баланса
-    async editBalance(newBalance) {
+    async editBalance() {
         this.popupEdit.classList.add('d-none');
-        const result = await HttpUtils.request('/balance', 'PUT', true, {"newBalance": newBalance});
+        const result = await HttpUtils.request('/balance', 'PUT', true, {"newBalance": this.balance.value});
         const response = result.response;
         if (result.error || !response || (response && !response.balance)) {
             return alert(' Возникла ошибка при изменении баланса. Обратитесь в поддержку');
         } else {
             this.balance.value = response.balance + '$';
             this.val = response.balance;
+            ;
         }
 
     }

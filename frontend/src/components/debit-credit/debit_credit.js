@@ -1,12 +1,9 @@
 import {AuthUtils} from "../utils/auth-utils";
-import {Layout} from "../main/layout";
 import {HttpUtils} from "../utils/http-utils";
 
 export class Debit_credit {
     constructor(openNewRoute) {
         this.openNewRoute = openNewRoute;
-
-        new Layout(this.openNewRoute);
 
         // проверяем, была ли сделана авторизация. Если  нет accessToken или refreshToken - открываем страницу login
         if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) {
@@ -36,17 +33,28 @@ export class Debit_credit {
             if(this.intervalButton.checked){this.intervalButton.click()}});
         this.dateTo.addEventListener('focusout',()=>{this.dateTo.classList.add('no-icon');
             if(this.intervalButton.checked){this.intervalButton.click()}});
-
-        document.getElementById('today_btn').addEventListener('click',()=>{this.period='';this.getOperations().then()});
-        document.getElementById('week_btn').addEventListener('click',()=>{this.period='week';this.getOperations().then()});
-        document.getElementById('month_btn').addEventListener('click',()=>{this.period='month';this.getOperations().then()});
-        document.getElementById('year_btn').addEventListener('click',()=>{this.period='year';this.getOperations().then()});
-        document.getElementById('all_btn').addEventListener('click',()=>{this.period='all';this.getOperations().then()});
+        this.page=this.today;
+        this.today=document.getElementById('today_btn');
+        this.week=document.getElementById('week_btn');
+        this.month=document.getElementById('month_btn');
+        this.year=document.getElementById('year_btn');
+        this.all=document.getElementById('all_btn');
         this.intervalButton=document.getElementById('interval_btn');
-        this.intervalButton.addEventListener('click',()=>{this.period='interval&dateFrom='+this.dateFrom.value+'&dateTo='+this.dateTo.value;this.getOperations().then()});
+
+        this.today.addEventListener('click',()=>{this.period='';this.getOperations().then();this.page=this.today});
+        this.week.addEventListener('click',()=>{this.period='week';this.getOperations().then();this.page=this.week});
+        this.month.addEventListener('click',()=>{this.period='month';this.getOperations().then();this.page=this.month});
+        this.year.addEventListener('click',()=>{this.period='year';this.getOperations().then();this.page=this.year});
+        this.all.addEventListener('click',()=>{this.period='all';this.getOperations().then();this.page=this.all});
+        this.intervalButton.addEventListener('click',()=>{this.period='interval&dateFrom='+this.dateFrom.value+'&dateTo='+this.dateTo.value;this.getOperations().then();this.page=this.intervalButton});
 
         this.getOperations().then();
     }
+
+    // static openTable(){
+    //     const event = new Event('click') ;
+    //     this.page.dispatchEvent(event);
+    // }
 
     async getOperations() {
 
@@ -93,7 +101,7 @@ export class Debit_credit {
 
             const iconDelete = document.createElement('div');
             icon.appendChild(iconDelete);
-            iconDelete.addEventListener('click', () => this.deleteOperation(response[i].id, response[i].category, response[i].amount, response[i].date))
+            iconDelete.addEventListener('click', () => this.deleteOperation(response[i].id, response[i].category, response[i].amount, new Date(response[i].date).toLocaleDateString('ru-RU')))
             iconDelete.style.cursor = 'pointer';
             iconDelete.innerHTML = ' <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">' +
                 ' <path d="M4 5.5C4.27614 5.5 4.5 5.72386 4.5 6V12C4.5 12.2761 4.27614 12.5 4 12.5C3.72386 12.5 3.5 12.2761 3.5 12V6C3.5 5.72386 3.72386 5.5 4 5.5Z"' +

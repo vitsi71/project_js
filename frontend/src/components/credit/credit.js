@@ -1,6 +1,4 @@
 import {AuthUtils} from "../utils/auth-utils";
-import {Layout} from "../main/layout";
-import {log10} from "chart.js/helpers";
 import {HttpUtils} from "../utils/http-utils";
 
 export class Credit {
@@ -11,7 +9,7 @@ export class Credit {
         if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) {
             return this.openNewRoute('login');
         }
-        new Layout(this.openNewRoute);
+
         this.popupDelete = document.getElementById('popup_delete');
 
         document.getElementById('credit_link').classList.add('active');
