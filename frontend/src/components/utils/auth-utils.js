@@ -7,7 +7,7 @@ export class AuthUtils {
     static userInfoTokenKey = 'userInfo';
 // записываем accessToken, refreshToken и userInfo если есть в localStorage
     static setAuthInfo(accessToken, refreshToken, userInfo = null) {
-        localStorage.setItem(this.accessTokenKey, accessToken);
+           localStorage.setItem(this.accessTokenKey, accessToken);
         localStorage.setItem(this.refreshTokenKey, refreshToken);
         if (userInfo) {
             localStorage.setItem(this.userInfoTokenKey, JSON.stringify(userInfo));
@@ -41,7 +41,7 @@ export class AuthUtils {
     // обновление Token
     static async updateRefreshToken() {
         let result = false
-        const refreshToken = this.getAuthInfo(this.refreshTokenKey);
+        let refreshToken = this.getAuthInfo(this.refreshTokenKey);
         //если есть refreshToken в localStorage то делаем запрос на нбновление ключей
         if (refreshToken) {
             const response = await fetch(config.api + '/refresh', {
@@ -52,13 +52,15 @@ export class AuthUtils {
                 },
                 body: JSON.stringify({refreshToken: refreshToken}),
             });
+
+
             // если получен успешный ответ
             if (response && response.status === 200) {
                 // обрабатываем ответ
                 const tokens = await response.json();
                 if (tokens && !tokens.error) {
                     // записываем новые ключи в localStorage
-                    this.setAuthInfo(tokens.accessToken, tokens.refreshToken);
+                    this.setAuthInfo(tokens.tokens.accessToken, tokens.tokens.refreshToken);
                     result = true;
                 }
 

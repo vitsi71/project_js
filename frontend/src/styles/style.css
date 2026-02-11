@@ -18,17 +18,20 @@ body {
     font-family: RobotoRegular, sans-serif;
     color: #052c65;
 }
-.container{
+
+.container {
     max-width: 1440px;
     margin: 0 auto;
 }
+
 .form-control::placeholder {
     color: #6c757d;
     font-size: 15px;
     line-height: 24px;
 }
-.input-group.is-invalid{
-    border:1px solid red;
+
+.input-group.is-invalid {
+    border: 1px solid red;
     border-radius: 5px;
 }
 
@@ -77,21 +80,14 @@ body {
     line-height: 24px;
 }
 
-.fs-40px {
+.fs-h1 {
     font-size: 40px;
 }
 
 .layout-content {
-    padding-left: 60px;
-    padding-top: 100px;
-    width: 100%;
-    margin-left: 219px
-}
-@media (max-width: 768px) {
-    .layout-content {
-        padding-left: 30px;
-        padding-top: 50px;
-        margin:0}
+    padding: 100px 20px 0 279px;
+    width: 100vw;
+    /*margin-left: 219px;*/
 }
 
 .text-base-color {
@@ -102,11 +98,17 @@ body {
     padding: 0.75rem 0.5rem;
 }
 
+input.no-icon {
+    width: 80px;
+}
+
 input.no-icon[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
 }
 
-
+.block-canvas{
+    gap: 84px;
+  }
 .popup {
     position: fixed;
     top: 0;
@@ -117,6 +119,7 @@ input.no-icon[type="date"]::-webkit-calendar-picker-indicator {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2000;
 
 }
 
@@ -140,7 +143,7 @@ input.no-icon[type="date"]::-webkit-calendar-picker-indicator {
 .content-category-block {
     border: 1px solid #ced4da;
     border-radius: 12px;
-    width: 352px;
+  width: min(352px,100%);
     height: 121px;
     font-size: 28px;
     color: #290661;
@@ -156,12 +159,10 @@ input.no-icon[type="date"]::-webkit-calendar-picker-indicator {
 
     .logo-sidebar {
         padding: 40px 70px 4px 50px;
-        /*border-bottom:1px solid #D9D9D9 ;*/
     }
 
     .nav-sidebar {
         padding: 46px 20px 4px 20px;
-        /*border-bottom:1px solid #D9D9D9 ;*/
     }
 
     .link-dark {
@@ -183,8 +184,9 @@ input.no-icon[type="date"]::-webkit-calendar-picker-indicator {
     border: 1px solid rgb(13, 110, 253);
     border-radius: 5px;
 
- }
-.nav-collapse.active{
+}
+
+.nav-collapse.active {
     border: 1px solid rgb(13, 110, 253);
     border-radius: 5px;
 
@@ -225,8 +227,8 @@ main {
 
 .btn-toggle.active {
     border: 1px solid rgb(13, 110, 253) !important;
-     color: white !important;
-     background-color: rgb(13, 110, 253);
+    color: white !important;
+    background-color: rgb(13, 110, 253);
     border-radius: 5px;
 
     svg {
@@ -261,6 +263,3 @@ a.nav-link:hover,
     background-color: #d2f4ea;
 }
 
-/*.scrollarea {*/
-/*    overflow-y: auto;*/
-/*}*/

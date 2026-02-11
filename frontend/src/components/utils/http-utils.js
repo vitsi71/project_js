@@ -1,5 +1,5 @@
 import config from "../../../config/config.js";
-import {AuthUtils} from "./auth-utils";
+import {AuthUtils} from "./auth-utils.js";
 
 export class HttpUtils {
 
@@ -46,14 +46,14 @@ export class HttpUtils {
             if (useAuth && response.status === 401) {
                 // 1 - токена нет
                 if (!token) {
-                    result.redirect = '/login';
+                    return result.redirect = '/login';
                 } else {
                     // 2 - токен просрочен
                     const updateTokenResult = await AuthUtils.updateRefreshToken();
 
-                    if(updateTokenResult){
+                    if (updateTokenResult) {
                         //запрос повторно
-                        return this.request( url,method,useAuth, body);
+                        return this.request(url, method, useAuth, body);
 
                     } else {
                         result.redirect = '/login';

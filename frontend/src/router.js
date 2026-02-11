@@ -11,7 +11,7 @@ import {Item_create} from "./components/debit-credit/item_create";
 import {Item_edit} from "./components/debit-credit/item_edit";
 import {Main} from "./components/main/main";
 import {Logout} from "./components/auth/logout";
-
+import {Layout} from "./components/main/layout";
 
 export class Router {
     constructor() {
@@ -30,12 +30,6 @@ export class Router {
                 load: () => {
                     new Main(this.openNewRoute.bind(this));
                                   },
-            },
-            {
-                route: '/404',
-                title: 'Страница не найдена',
-                filePathTemplate: '/templates/pages/404.html',
-                useLayout: false
             },
             {
                 route: '/login',
@@ -60,6 +54,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/debit/debit.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    // new Layout(this.openNewRoute);
                     new Debit(this.openNewRoute.bind(this));
                                   },
             },
@@ -69,6 +64,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/debit/debit_add.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    // new Layout(this.openNewRoute);
                     new Debit_add(this.openNewRoute.bind(this));
                                   },
             },
@@ -78,6 +74,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/debit/debit_edit.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    // new Layout(this.openNewRoute);
                     new Debit_edit(this.openNewRoute.bind(this));
                                  },
             },
@@ -87,6 +84,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/credit/credit.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    // new Layout(this.openNewRoute);
                     new Credit(this.openNewRoute.bind(this));
                                    },
             },
@@ -96,6 +94,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/credit/credit_add.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    // new Layout(this.openNewRoute);
                     new Credit_add(this.openNewRoute.bind(this));
                                  },
             },
@@ -105,6 +104,7 @@ export class Router {
                 filePathTemplate: '/templates/pages/credit/credit_edit.html',
                 useLayout: '/templates/layout.html',
                 load: () => {
+                    // new Layout(this.openNewRoute);
                     new Credit_edit(this.openNewRoute.bind(this));
                                 },
             },
@@ -175,7 +175,7 @@ export class Router {
     }
 
     // открвтие страницы по ссылке
-    async openNewRoute(url) {
+   async openNewRoute(url) {
         const currentRoute = window.location.pathname;//возвращает путь, следующий за именем домена в текущем URL-адресе
         history.pushState({}, '', url);// позволяет изменить URL без перезагрузки и добавить новую запись в историю браузера
         await this.activateRoute(null, currentRoute);
@@ -199,11 +199,11 @@ export class Router {
                     this.contentPageElement.innerHTML = await fetch(newRoute.useLayout).then(response => response.text());
                     // на полученной странице ищем место для следующей вставки кода
                     contentBlock = document.getElementById('content-layout');
+                    new Layout(this.openNewRoute);
                 }
                 // ищем и вставляем основной текст HTML открываемой страницы из filePathTemplate в index.html
                 contentBlock.innerHTML = await fetch(newRoute.filePathTemplate).then(response => response.text());
                 //
-
             }
             //
             // выполняем скрипт, необходимый для работы данной страницы
@@ -213,8 +213,8 @@ export class Router {
 
         } else {
             // если route не найден
-            window.location = '/404';
-            history.pushState({}, '', '/404');// позволяет изменить URL без перезагрузки и добавить новую запись в историю браузера
+            window.location = '/';
+            history.pushState({}, '', '/');// позволяет изменить URL без перезагрузки и добавить новую запись в историю браузера
             await this.activateRoute();
         }
     }

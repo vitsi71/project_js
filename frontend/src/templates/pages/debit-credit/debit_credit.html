@@ -1,113 +1,110 @@
-            <div class="fs-40px font-m w-100 lh-1">Доходы и расходы</div>
+<div class="fs-h1 font-m w-100 lh-1">Доходы и расходы</div>
 
-            <div class="d-flex gap-10px w-100 mt-4 pt-3">
-                <a href="item_create" type="button" class="btn btn-success font-m fs-14px px-3 py-2">
-                    Создать доход
-                </a>
-                <a href="item_create" type="button" class="btn btn-danger font-m fs-14px px-3 py-2">
-                    Создать расход
-                </a>
-            </div>
+<div class="d-flex gap-10px w-100 mt-4 pt-3">
+    <a href="" type="button" class="btn btn-success font-m fs-14px px-3 py-2" id="create_income">
+        Создать доход
+    </a>
+    <a href="" type="button" class="btn btn-danger font-m fs-14px px-3 py-2" id="create_expense">
+        Создать расход
+    </a>
+</div>
 
-            <div class="d-flex gap-20px align-items-center my-4 py-3">
-                <button type="button" class="btn btn-secondary font-m px-3" style="width: 100px;">
-                    Сегодня
-                </button>
+<div class=" d-flex gap-20px align-items-center my-lg-5 py-lg-2 my-3 flex-wrap">
+    <div>
+        <input type="radio" class="btn-check" name="period" id="today_btn" autocomplete="off" checked>
+        <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="today_btn">Сегодня</label>
+    </div>
+    <div>
+        <input type="radio" class="btn-check" name="period" id="week_btn" autocomplete="off">
+        <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="week_btn">Неделя</label>
+    </div>
+    <div>
+        <input type="radio" class="btn-check" name="period" id="month_btn" autocomplete="off">
+        <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="month_btn">Месяц</label>
+    </div>
+    <div>
+        <input type="radio" class="btn-check" name="period" id="year_btn" autocomplete="off">
+        <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="year_btn">Год</label>
+    </div>
+    <div>
+        <input type="radio" class="btn-check" name="period" id="all_btn" autocomplete="off">
+        <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="all_btn">Все</label>
+    </div>
+    <div class="d-flex gap-20px align-items-center" >
+        <input type="radio" class="btn-check" name="period" id="interval_btn" autocomplete="off">
+        <label class="btn btn-outline-secondary font-m" style="width: 100px;" for="interval_btn">Интервал</label>
+    </div>
+    <div>
+        с <input class="border border-0 no-icon" type="date" placeholder="Дата" id="interval_date1">
+        по <input class="border border-0 no-icon" type="date" placeholder="Дата" id="interval_date2">
+    </div>
 
-                <button type="button" class="btn btn-outline-secondary font-m px-3" style="width: 100px;">
-                    Неделя
-                </button>
 
-                <button type="button" class="btn btn-outline-secondary font-m px-3" style="width: 100px;">
-                    Месяц
-                </button>
-
-                <button type="button" class="btn btn-outline-secondary font-m px-3" style="width: 100px;">
-                    Год
-                </button>
-
-                <button type="button" class="btn btn-outline-secondary font-m px-3" style="width: 100px;">
-                    Все
-                </button>
-
-                <button type="button" class="btn btn-outline-secondary font-m px-3" style="width: 100px;">
-                    Интервал
-                </button>
-                с <input class="border border-0 no-icon" style="width: 80px" type="text" placeholder="Дата" onfocus="(this.type='date')">
-                по <input class="border border-0 no-icon" style="width: 80px" type="text" placeholder="Дата" onfocus="(this.type='date')">
-           
-            </div>
 <hr class="m-0">
-            <table class="table">
-                <thead>
-                <tr class="text-center">
-                    <th scope="col" class="text-base-color">№ операции</th>
-                    <th scope="col" class="text-base-color">Тип</th>
-                    <th scope="col" class="text-base-color">Категория</th>
-                    <th scope="col" class="text-base-color">Сумма</th>
-                    <th scope="col" class="text-base-color">Дата</th>
-                    <th scope="col" class="text-base-color">Комментарий</th>
-                    <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="text-center">
-                    <th>1</th>
-                    <td class="text-success">доход</td>
-                    <td>зарплата</td>
-                    <td class="text-center">500$</td>
-                    <td class="text-center">11.09.2022</td>
-                    <td class="text-center"></td>
-                    <td class="text-center d-flex gap-10px align-items-center">
-                        <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 5.5C4.27614 5.5 4.5 5.72386 4.5 6V12C4.5 12.2761 4.27614 12.5 4 12.5C3.72386 12.5 3.5 12.2761 3.5 12V6C3.5 5.72386 3.72386 5.5 4 5.5Z" fill="black"/>
-                            <path d="M6.5 5.5C6.77614 5.5 7 5.72386 7 6V12C7 12.2761 6.77614 12.5 6.5 12.5C6.22386 12.5 6 12.2761 6 12V6C6 5.72386 6.22386 5.5 6.5 5.5Z" fill="black"/>
-                            <path d="M9.5 6C9.5 5.72386 9.27614 5.5 9 5.5C8.72386 5.5 8.5 5.72386 8.5 6V12C8.5 12.2761 8.72386 12.5 9 12.5C9.27614 12.5 9.5 12.2761 9.5 12V6Z" fill="black"/>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M13 3C13 3.55228 12.5523 4 12 4H11.5V13C11.5 14.1046 10.6046 15 9.5 15H3.5C2.39543 15 1.5 14.1046 1.5 13V4H1C0.447715 4 0 3.55228 0 3V2C0 1.44772 0.447715 1 1 1H4.5C4.5 0.447715 4.94772 0 5.5 0H7.5C8.05229 0 8.5 0.447715 8.5 1H12C12.5523 1 13 1.44772 13 2V3ZM2.61803 4L2.5 4.05902V13C2.5 13.5523 2.94772 14 3.5 14H9.5C10.0523 14 10.5 13.5523 10.5 13V4.05902L10.382 4H2.61803ZM1 3V2H12V3H1Z" fill="black"/>
-                        </svg>
-                        <a href="item_edit"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12.1465 0.146447C12.3417 -0.0488155 12.6583 -0.0488155 12.8536 0.146447L15.8536 3.14645C16.0488 3.34171 16.0488 3.65829 15.8536 3.85355L5.85357 13.8536C5.80569 13.9014 5.74858 13.9391 5.68571 13.9642L0.68571 15.9642C0.500001 16.0385 0.287892 15.995 0.146461 15.8536C0.00502989 15.7121 -0.0385071 15.5 0.0357762 15.3143L2.03578 10.3143C2.06092 10.2514 2.09858 10.1943 2.14646 10.1464L12.1465 0.146447ZM11.2071 2.5L13.5 4.79289L14.7929 3.5L12.5 1.20711L11.2071 2.5ZM12.7929 5.5L10.5 3.20711L4.00001 9.70711V10H4.50001C4.77616 10 5.00001 10.2239 5.00001 10.5V11H5.50001C5.77616 11 6.00001 11.2239 6.00001 11.5V12H6.29291L12.7929 5.5ZM3.03167 10.6755L2.92614 10.781L1.39754 14.6025L5.21903 13.0739L5.32456 12.9683C5.13496 12.8973 5.00001 12.7144 5.00001 12.5V12H4.50001C4.22387 12 4.00001 11.7761 4.00001 11.5V11H3.50001C3.28561 11 3.10272 10.865 3.03167 10.6755Z" fill="black"/>
-                        </svg></a>
-                    </td>
-                </tr>
-                <tr>
-                    <th class="text-center">2</th>
-                    <td class="text-center text-danger">расход</td>
-                    <td class="text-center">жилье</td>
-                    <td class="text-center">2500$</td>
-                    <td class="text-center">12.09.2022</td>
-                    <td class="text-center"></td>
-                    <td class="text-center d-flex gap-10px align-items-center">
-                        <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 5.5C4.27614 5.5 4.5 5.72386 4.5 6V12C4.5 12.2761 4.27614 12.5 4 12.5C3.72386 12.5 3.5 12.2761 3.5 12V6C3.5 5.72386 3.72386 5.5 4 5.5Z" fill="black"/>
-                            <path d="M6.5 5.5C6.77614 5.5 7 5.72386 7 6V12C7 12.2761 6.77614 12.5 6.5 12.5C6.22386 12.5 6 12.2761 6 12V6C6 5.72386 6.22386 5.5 6.5 5.5Z" fill="black"/>
-                            <path d="M9.5 6C9.5 5.72386 9.27614 5.5 9 5.5C8.72386 5.5 8.5 5.72386 8.5 6V12C8.5 12.2761 8.72386 12.5 9 12.5C9.27614 12.5 9.5 12.2761 9.5 12V6Z" fill="black"/>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M13 3C13 3.55228 12.5523 4 12 4H11.5V13C11.5 14.1046 10.6046 15 9.5 15H3.5C2.39543 15 1.5 14.1046 1.5 13V4H1C0.447715 4 0 3.55228 0 3V2C0 1.44772 0.447715 1 1 1H4.5C4.5 0.447715 4.94772 0 5.5 0H7.5C8.05229 0 8.5 0.447715 8.5 1H12C12.5523 1 13 1.44772 13 2V3ZM2.61803 4L2.5 4.05902V13C2.5 13.5523 2.94772 14 3.5 14H9.5C10.0523 14 10.5 13.5523 10.5 13V4.05902L10.382 4H2.61803ZM1 3V2H12V3H1Z" fill="black"/>
-                        </svg>
-                        <a href="item_edit"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12.1465 0.146447C12.3417 -0.0488155 12.6583 -0.0488155 12.8536 0.146447L15.8536 3.14645C16.0488 3.34171 16.0488 3.65829 15.8536 3.85355L5.85357 13.8536C5.80569 13.9014 5.74858 13.9391 5.68571 13.9642L0.68571 15.9642C0.500001 16.0385 0.287892 15.995 0.146461 15.8536C0.00502989 15.7121 -0.0385071 15.5 0.0357762 15.3143L2.03578 10.3143C2.06092 10.2514 2.09858 10.1943 2.14646 10.1464L12.1465 0.146447ZM11.2071 2.5L13.5 4.79289L14.7929 3.5L12.5 1.20711L11.2071 2.5ZM12.7929 5.5L10.5 3.20711L4.00001 9.70711V10H4.50001C4.77616 10 5.00001 10.2239 5.00001 10.5V11H5.50001C5.77616 11 6.00001 11.2239 6.00001 11.5V12H6.29291L12.7929 5.5ZM3.03167 10.6755L2.92614 10.781L1.39754 14.6025L5.21903 13.0739L5.32456 12.9683C5.13496 12.8973 5.00001 12.7144 5.00001 12.5V12H4.50001C4.22387 12 4.00001 11.7761 4.00001 11.5V11H3.50001C3.28561 11 3.10272 10.865 3.03167 10.6755Z" fill="black"/>
-                        </svg></a>
-                    </td>
-                </tr>
+<table class="table">
+    <thead>
+    <tr class="text-center">
+        <th scope="col" class="text-base-color">№ операции</th>
+        <th scope="col" class="text-base-color">Тип</th>
+        <th scope="col" class="text-base-color">Категория</th>
+        <th scope="col" class="text-base-color">Сумма</th>
+        <th scope="col" class="text-base-color">Дата</th>
+        <th scope="col" class="text-base-color">Комментарий</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody id="operations_tbody">
 
-                </tbody>
-            </table>
+    <!--    шаблон создаваемой строки таблицы------------------------------------------------------->
+    <!--    <tr class="text-center">-->
+    <!--        <th>1</th>-->
+    <!--        <td class="text-success">доход</td>-->
+    <!--        <td>зарплата</td>-->
+    <!--        <td class="text-center">500$</td>-->
+    <!--        <td class="text-center">11.09.2022</td>-->
+    <!--        <td class="text-center"></td>-->
+    <!--        <td class="text-center d-flex gap-10px align-items-center">-->
+    <!--            <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+    <!--                <path d="M4 5.5C4.27614 5.5 4.5 5.72386 4.5 6V12C4.5 12.2761 4.27614 12.5 4 12.5C3.72386 12.5 3.5 12.2761 3.5 12V6C3.5 5.72386 3.72386 5.5 4 5.5Z"-->
+    <!--                      fill="black"/>-->
+    <!--                <path d="M6.5 5.5C6.77614 5.5 7 5.72386 7 6V12C7 12.2761 6.77614 12.5 6.5 12.5C6.22386 12.5 6 12.2761 6 12V6C6 5.72386 6.22386 5.5 6.5 5.5Z"-->
+    <!--                      fill="black"/>-->
+    <!--                <path d="M9.5 6C9.5 5.72386 9.27614 5.5 9 5.5C8.72386 5.5 8.5 5.72386 8.5 6V12C8.5 12.2761 8.72386 12.5 9 12.5C9.27614 12.5 9.5 12.2761 9.5 12V6Z"-->
+    <!--                      fill="black"/>-->
+    <!--                <path fill-rule="evenodd" clip-rule="evenodd"-->
+    <!--                      d="M13 3C13 3.55228 12.5523 4 12 4H11.5V13C11.5 14.1046 10.6046 15 9.5 15H3.5C2.39543 15 1.5 14.1046 1.5 13V4H1C0.447715 4 0 3.55228 0 3V2C0 1.44772 0.447715 1 1 1H4.5C4.5 0.447715 4.94772 0 5.5 0H7.5C8.05229 0 8.5 0.447715 8.5 1H12C12.5523 1 13 1.44772 13 2V3ZM2.61803 4L2.5 4.05902V13C2.5 13.5523 2.94772 14 3.5 14H9.5C10.0523 14 10.5 13.5523 10.5 13V4.05902L10.382 4H2.61803ZM1 3V2H12V3H1Z"-->
+    <!--                      fill="black"/>-->
+    <!--            </svg>-->
+    <!--            <a href="item_edit">-->
+    <!--                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+    <!--                    <path d="M12.1465 0.146447C12.3417 -0.0488155 12.6583 -0.0488155 12.8536 0.146447L15.8536 3.14645C16.0488 3.34171 16.0488 3.65829 15.8536 3.85355L5.85357 13.8536C5.80569 13.9014 5.74858 13.9391 5.68571 13.9642L0.68571 15.9642C0.500001 16.0385 0.287892 15.995 0.146461 15.8536C0.00502989 15.7121 -0.0385071 15.5 0.0357762 15.3143L2.03578 10.3143C2.06092 10.2514 2.09858 10.1943 2.14646 10.1464L12.1465 0.146447ZM11.2071 2.5L13.5 4.79289L14.7929 3.5L12.5 1.20711L11.2071 2.5ZM12.7929 5.5L10.5 3.20711L4.00001 9.70711V10H4.50001C4.77616 10 5.00001 10.2239 5.00001 10.5V11H5.50001C5.77616 11 6.00001 11.2239 6.00001 11.5V12H6.29291L12.7929 5.5ZM3.03167 10.6755L2.92614 10.781L1.39754 14.6025L5.21903 13.0739L5.32456 12.9683C5.13496 12.8973 5.00001 12.7144 5.00001 12.5V12H4.50001C4.22387 12 4.00001 11.7761 4.00001 11.5V11H3.50001C3.28561 11 3.10272 10.865 3.03167 10.6755Z"-->
+    <!--                          fill="black"/>-->
+    <!--                </svg>-->
+    <!--            </a>-->
+    <!--        </td>-->
+    <!--    </tr>-->
+    <!--   конец шаблона создаваемой строки таблицы------------------------------------------------------->
 
+    </tbody>
+</table>
 
-<div class="popup d-none">
+<div class="popup d-none" id="popup_delete">
     <div class="popup-info mx-1">
         <div class="popup-text">
             <div class="font-m w-100 lh-1 mb-3 pb-1">
-                Вы действительно хотите удалить операцию?
+                Вы действительно хотите удалить операцию из категории <span id="category_operation"></span> на сумму
+                <span id="amount_operation"></span>$ от <span
+                    id="date_operation"></span>?
             </div>
             <div class="d-flex gap-12px justify-content-center">
-                <button type="button" class="btn btn-success font-m fs-14px px-3 py-2">
+                <button type="button" class="btn btn-success font-m fs-14px px-3 py-2" id="button_popup_cancel">
                     Не удалять
                 </button>
-                <button type="button" class="btn btn-danger font-m fs-14px px-3 py-2">
+                <button type="button" class="btn btn-danger font-m fs-14px px-3 py-2" id="button_popup_delete">
                     Да, удалить
                 </button>
             </div>
         </div>
     </div>
+</div>
 </div>
